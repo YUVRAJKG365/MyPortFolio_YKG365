@@ -169,12 +169,18 @@ function validateForm() {
 }
         // Project modals functionality
         function openModal(projectId) {
-            // Close any currently open modal
-            closeModal();
-            
+            closeModal(); // Close any currently open modal
+    
             const modal = document.getElementById(`${projectId}-modal`);
             modal.classList.add('active');
             document.body.classList.add('no-scroll');
+    
+            // Force show close button on mobile
+            if (window.innerWidth <= 768) {
+                const closeBtn = modal.querySelector('.close-modal');
+                closeBtn.style.display = 'flex';
+                closeBtn.style.opacity = '1';
+            }
         }
 
         function closeModal() {
