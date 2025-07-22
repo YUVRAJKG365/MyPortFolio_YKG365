@@ -334,7 +334,7 @@
             color: var(--accent);
             opacity: 0;
             transform: translateX(-30px);
-            transition: all 0.6s ease-out 0.2s;
+            transition: all 0.3s ease-out;
         }
 
         .about-text p {
@@ -342,7 +342,7 @@
             font-size: 1.1rem;
             opacity: 0;
             transform: translateX(-30px);
-            transition: all 0.6s ease-out;
+            transition: all 0.2s ease-out;
         }
 
         .about-buttons {
