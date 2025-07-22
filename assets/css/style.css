@@ -1556,6 +1556,63 @@
                 font-size: 1rem;
             }
         }
+        @media (max-width: 768px) {
+            /* Ensure project/experience/certification cards are visible */
+            .project-card, .certificate-card, .mobile-timeline-item {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+
+            /* Adjust card layout for mobile */
+            .projects-grid, .certifications-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Make sure cards have proper spacing */
+            .project-card, .certificate-card {
+                margin-bottom: 20px;
+            }
+
+            /* Ensure card content is properly sized */
+            .project-content, .certificate-content {
+                padding: 20px;
+            }
+
+            /* Make sure images in cards are visible */
+            .project-image, .certificate-image {
+                height: 150px;
+            }
+
+        }
+        @media (max-width: 768px) {
+            /* Make sure section titles are visible */
+            .section-title {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            /* Adjust padding for sections */
+            section {
+                padding: 60px 0;
+            }
+
+            /* Ensure modals are full width on mobile */
+            .project-modal-content, 
+            .experience-modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            /* Make modal content stack vertically */
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         .project-card {
             background: #1e1e2d;
             border-radius: 15px;
