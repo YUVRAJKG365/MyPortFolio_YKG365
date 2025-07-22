@@ -183,20 +183,25 @@ function validateForm() {
             });
             document.body.classList.remove('no-scroll');
         }
-
-        // For mobile devices, use click instead of hover
+        // For mobile devices, ensure cards are clickable
         if (window.innerWidth <= 768) {
-            document.querySelectorAll('.project-card').forEach(card => {
-                const originalHover = card.getAttribute('onmouseenter');
-                if (originalHover) {
-                    const projectId = originalHover.match(/openModal\('([^']+)'/)[1];
-                    card.removeAttribute('onmouseenter');
-                    card.onclick = function() {
-                        openModal(projectId);
-                    };
+            document.querySelectorAll('.project-card, .certificate-card, .mobile-timeline-item').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking on a link inside the card
+                 if (!e.target.closest('a')) {
+                    const modalId = this.getAttribute('data-modal');
+                    if (modalId) {
+                        if (modalId.includes('expModal')) {
+                            openExpModal(modalId.replace('expModal-', ''));
+                        } else {
+                            openModal(modalId);
+                        }
+                    }
                 }
             });
-        }
+        });
+    }
 
         // Experience modals functionality
         function openExpModal(expId) {
