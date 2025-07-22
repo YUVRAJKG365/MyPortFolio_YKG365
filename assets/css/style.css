@@ -334,7 +334,7 @@
             color: var(--accent);
             opacity: 0;
             transform: translateX(-30px);
-            transition: all 0.3s ease-out;
+            transition: all 0.6s ease-out 0.2s;
         }
 
         .about-text p {
@@ -342,7 +342,7 @@
             font-size: 1.1rem;
             opacity: 0;
             transform: translateX(-30px);
-            transition: all 0.2s ease-out;
+            transition: all 0.6s ease-out;
         }
 
         .about-buttons {
@@ -1611,6 +1611,33 @@
             /* Make modal content stack vertically */
             .modal-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            /* Ensure close button is visible in project modals */
+            .project-modal .close-modal {
+                display: flex !important;
+                opacity: 1 !important;
+                top: 15px;
+                right: 15px;
+                background: rgba(255, 45, 117, 0.8);
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+                z-index: 2100;
+            }
+
+            /* Make modal content scrollable */
+            .project-modal-content {
+                padding-top: 60px; /* Give space for close button */
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Ensure modal is properly sized on mobile */
+            .project-modal.active .project-modal-content {
+                width: 95%;
+                max-height: 85vh;
             }
         }
         .project-card {
