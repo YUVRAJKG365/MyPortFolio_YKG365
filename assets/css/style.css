@@ -1614,10 +1614,15 @@
             }
         }
         @media (max-width: 768px) {
-            /* Ensure close button is visible in project modals */
-            .project-modal .close-modal {
+            /* Ensure close button is visible in all modals on small screens */
+            .project-modal .close-modal,
+            .experience-modal .close-modal,
+            .resume-modal .close-modal {
                 display: flex !important;
+                justify-content: center;
+                align-items: center;
                 opacity: 1 !important;
+                position: absolute;
                 top: 15px;
                 right: 15px;
                 background: rgba(255, 45, 117, 0.8);
@@ -1625,8 +1630,17 @@
                 height: 35px;
                 font-size: 1.2rem;
                 z-index: 2100;
+                border-radius: 50%;
+                color: #fff;
+                cursor: pointer;
             }
-
+            .project-modal .close-modal:hover,
+            .experience-modal .close-modal:hover,
+            .resume-modal .close-modal:hover {
+                background: rgba(255, 45, 117, 1);
+                transform: rotate(90deg);
+            }
+        
             /* Make modal content scrollable */
             .project-modal-content {
                 padding-top: 60px; /* Give space for close button */
@@ -1634,7 +1648,7 @@
                 -webkit-overflow-scrolling: touch;
             }
 
-            /* Ensure modal is properly sized on mobile */
+             /* Ensure modal is properly sized on mobile */
             .project-modal.active .project-modal-content {
                 width: 95%;
                 max-height: 85vh;
