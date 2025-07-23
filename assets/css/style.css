@@ -21,6 +21,8 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 /* Only show particles on desktop */
@@ -31,6 +33,7 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+    will-change: transform;
 }
 
 .container {
@@ -51,6 +54,7 @@ header {
     background: rgba(10, 10, 30, 0.6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    will-change: transform, background, padding;
 }
 
 header.scrolled {
@@ -74,6 +78,7 @@ nav {
     -webkit-text-fill-color: transparent;
     text-decoration: none;
     transition: var(--transition);
+    will-change: transform;
 }
 
 .logo:hover {
@@ -95,6 +100,7 @@ nav {
     font-size: 1rem;
     padding: 8px 12px;
     border-radius: 4px;
+    will-change: transform, color;
 }
 
 .nav-links a::after {
@@ -106,6 +112,7 @@ nav {
     height: 2px;
     background: linear-gradient(to right, var(--accent), var(--primary));
     transition: var(--transition);
+    will-change: width;
 }
 
 .nav-links a:hover {
@@ -141,6 +148,7 @@ nav {
     transition: right 0.3s ease-in-out;
     padding: 80px 30px;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+    will-change: right;
 }
 
 .mobile-menu.active {
@@ -178,6 +186,7 @@ nav {
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
+    will-change: opacity;
 }
 
 .overlay.active {
@@ -202,7 +211,7 @@ nav {
 
 .hero h1 {
     font-family: 'Raleway', sans-serif;
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
@@ -212,27 +221,30 @@ nav {
     -webkit-text-fill-color: transparent;
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeUp 1s forwards 0.2s;
+    animation: fadeUp 1s forwards 0.3s;
     text-shadow: 0 0 20px rgba(166, 216, 255, 0.3);
+    will-change: transform, opacity;
 }
 
 .hero h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
     font-weight: 500;
     margin-bottom: 30px;
     color: rgba(255, 255, 255, 0.8);
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeUp 1s forwards 0.3s;
+    animation: fadeUp 1s forwards 0.6s;
+    will-change: transform, opacity;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     margin-bottom: 40px;
     max-width: 700px;
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeUp 1s forwards 0.6s;
+    animation: fadeUp 1s forwards 0.9s;
+    will-change: transform, opacity;
 }
 
 .btn {
@@ -254,6 +266,7 @@ nav {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    will-change: transform, box-shadow, background;
 }
 
 .btn::before {
@@ -294,13 +307,14 @@ section {
 
 .section-title {
     font-family: 'Raleway', sans-serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     text-align: center;
     margin-bottom: 70px;
     position: relative;
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
 }
 
 .section-title.in-view {
@@ -329,20 +343,22 @@ section {
 }
 
 .about-text h3 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     margin-bottom: 20px;
     color: var(--accent);
     opacity: 0;
     transform: translateX(-30px);
     transition: all 0.6s ease-out 0.2s;
+    will-change: transform, opacity;
 }
 
 .about-text p {
     margin-bottom: 20px;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     opacity: 0;
     transform: translateX(-30px);
     transition: all 0.6s ease-out;
+    will-change: transform, opacity;
 }
 
 .about-buttons {
@@ -356,8 +372,8 @@ section {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    height: 500px;
-    width: 400px;
+    height: min(500px, 50vw);
+    width: min(400px, 80vw);
     margin: 0 auto;
     background: linear-gradient(45deg, #2575fc, #6a11cb);
     display: flex;
@@ -367,6 +383,7 @@ section {
     transform: scale(0.95);
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity, box-shadow;
 }
 
 .about-image.in-view {
@@ -389,6 +406,7 @@ section {
     background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transform: rotate(30deg);
     animation: shine 3s infinite;
+    will-change: transform;
 }
 
 @keyframes shine {
@@ -402,6 +420,7 @@ section {
     object-fit: cover;
     object-position: center top;
     transition: var(--transition);
+    will-change: transform;
 }
 
 .about-image:hover img {
@@ -430,6 +449,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transform: translateY(50px);
     opacity: 0;
+    will-change: transform, opacity;
 }
 
 .skill-card.visible {
@@ -490,6 +510,7 @@ section {
     transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    will-change: transform, opacity;
 }
 
 .timeline-item.visible {
@@ -568,6 +589,7 @@ section {
     transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    will-change: transform, opacity;
 }
 
 .mobile-timeline-item.visible {
@@ -608,9 +630,10 @@ section {
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in;
     padding: 20px;
     overflow-y: auto;
+    will-change: opacity;
 }
 
 .experience-modal.active {
@@ -630,10 +653,11 @@ section {
     border: 1px solid var(--accent);
     box-shadow: 0 0 30px rgba(255, 45, 117, 0.3);
     transform: scale(0.9);
-    transition: transform 0.31s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     margin: 0 auto;
     scrollbar-width: none; 
     -ms-overflow-style: none;
+    will-change: transform;
 }
 
 .experience-modal.active .experience-modal-content {
@@ -667,19 +691,19 @@ section {
 }
 
 .exp-modal-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 20px;
     color: var(--accent);
 }
 
 .exp-modal-company {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     margin-bottom: 15px;
     color: rgba(255, 255, 255, 0.8);
 }
 
 .exp-modal-date {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     margin-bottom: 20px;
     color: var(--accent);
 }
@@ -724,7 +748,7 @@ section {
 /* Projects Section */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -742,6 +766,7 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
+    will-change: transform, opacity;
 }
 
 .project-card.visible {
@@ -757,13 +782,13 @@ section {
 
 .project-image {
     height: 200px;
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    background: rgba(106, 17, 203, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: rgba(106, 17, 203, 0.1);
+    will-change: transform;
 }
 
 .project-image::before {
@@ -776,11 +801,11 @@ section {
     background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transform: rotate(30deg);
     animation: shine 3s infinite;
+    will-change: transform;
 }
 
 .project-image i {
     font-size: 4rem;
-    color: rgba(255, 255, 255, 0.2);
     color: #6a11cb;
 }
 
@@ -788,6 +813,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    will-change: transform;
 }
 
 .project-content {
@@ -798,27 +824,19 @@ section {
 }
 
 .project-title {
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
     margin-bottom: 15px;
-    font-size: 1.3rem;
-    margin-bottom: 10px;
     color: #fff;
 }
 
 .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
     gap: 8px;
     margin-bottom: 15px;
 }
 
 .tech-tag {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
     background: rgba(106, 17, 203, 0.2);
     color: #b794f6;
     padding: 5px 12px;
@@ -849,9 +867,10 @@ section {
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in;
     padding: 20px;
     overflow-y: auto;
+    will-change: opacity;
 }
 
 .project-modal.active {
@@ -875,6 +894,7 @@ section {
     margin: 0 auto;
     scrollbar-width: none; 
     -ms-overflow-style: none;
+    will-change: transform;
 }
 
 .project-modal.active .project-modal-content {
@@ -909,8 +929,14 @@ section {
 
 .modal-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
+}
+
+@media (min-width: 992px) {
+    .modal-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .modal-video-container {
@@ -932,48 +958,13 @@ section {
     border: none;
 }
 
-.restart-video-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-    border: none;
-    outline: none;
-}
-
-.modal-video-container:hover .restart-video-btn {
-    opacity: 1;
-}
-
-.restart-video-btn:hover {
-    animation: pulse 1s infinite;
-    background: rgba(255, 45, 117, 0.7);
-}
-
-.modal-video-controls {
-    display: none !important;
-}
-
 .modal-content {
     display: flex;
     flex-direction: column;
 }
 
 .modal-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 20px;
     color: var(--accent);
 }
@@ -1036,6 +1027,7 @@ section {
     transition: all 0.3s ease-in;
     padding: 20px;
     overflow-y: auto;
+    will-change: opacity;
 }
 
 .resume-modal.active {
@@ -1059,6 +1051,7 @@ section {
     margin: 0 auto;
     scrollbar-width: none; 
     -ms-overflow-style: none;
+    will-change: transform;
 }
 
 .resume-modal.active .resume-modal-content {
@@ -1151,13 +1144,14 @@ section {
     gap: 30px;
     padding: 20px 0;
     transition: transform 0.3s ease-out;
+    will-change: transform;
 }
 
 .certificate-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     overflow: hidden;
-    min-width: 300px;
+    min-width: 280px;
     max-width: 300px;
     height: 400px;
     display: flex;
@@ -1167,6 +1161,7 @@ section {
     transition: var(--transition);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
+    will-change: transform;
 }
 
 .certificate-card:hover {
@@ -1190,6 +1185,7 @@ section {
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
+    will-change: transform;
 }
 
 .certificate-card:hover .certificate-image img {
@@ -1267,8 +1263,14 @@ section {
 /* Contact Section */
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 50px;
+}
+
+@media (min-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .contact-info {
@@ -1389,21 +1391,6 @@ footer {
     }
 }
 
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
-    100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.fa-spin {
-    animation: spin 1s linear infinite;
-}
-
 /* Responsive */
 @media (max-width: 1200px) {
     .hero h1 {
@@ -1416,8 +1403,7 @@ footer {
 }
 
 @media (max-width: 992px) {
-    .about-content,
-    .contact-container {
+    .about-content {
         grid-template-columns: 1fr;
     }
 
@@ -1459,10 +1445,6 @@ footer {
         gap: 20px;
     }
 
-    .modal-video-container {
-        margin-bottom: 20px;
-    }
-
     .exp-doc-item {
         min-width: 100%;
     }
@@ -1484,23 +1466,7 @@ footer {
         text-align: center;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero h2 {
-        font-size: 1.3rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
     /* About section adjustments */
-    .about-text h3 {
-        font-size: 1.5rem;
-    }
-
     .about-buttons {
         flex-direction: column;
         gap: 15px;
@@ -1521,12 +1487,6 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    /* Section titles */
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 50px;
-    }
-
     /* Hide desktop timeline, show mobile */
     .timeline {
         display: none;
@@ -1537,10 +1497,6 @@ footer {
     }
 
     /* Contact section */
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-
     .contact-info {
         margin-bottom: 40px;
     }
@@ -1558,26 +1514,16 @@ footer {
         display: none;
     }
 
-    .skill-card:hover,
-    .project-card:hover,
-    .certificate-card:hover {
-        transform: none;
-    }
-
     /* Ensure project/experience/certification cards are visible */
     .project-card, .certificate-card, .mobile-timeline-item {
         opacity: 1 !important;
         transform: translateY(0) !important;
-        display: block !important;
-        visibility: visible !important;
     }
 
     /* Make sure section titles are visible */
     .section-title {
         opacity: 1 !important;
         transform: translateY(0) !important;
-        font-size: 1.8rem;
-        margin-bottom: 30px;
     }
 
     /* Adjust padding for sections */
@@ -1591,7 +1537,7 @@ footer {
     .resume-modal-content {
         width: 95%;
         padding: 20px;
-        padding-top: 60px; /* Give space for close button */
+        padding-top: 60px;
         max-height: 85vh;
     }
 
@@ -1607,23 +1553,6 @@ footer {
         width: 35px;
         height: 35px;
         font-size: 1.2rem;
-        z-index: 2100;
-    }
-
-    /* Make modal content scrollable */
-    .project-modal-content,
-    .experience-modal-content,
-    .resume-modal-content {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Ensure blur effect works on mobile */
-    .project-modal,
-    .experience-modal,
-    .resume-modal {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
     }
 
     /* Adjust iframe container in resume modal for mobile */
