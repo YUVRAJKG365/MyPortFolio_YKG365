@@ -1571,11 +1571,6 @@ footer {
         font-size: 1rem;
     }
 }
-@media(pointer: coarse){
-    :focus:not(:focus-visible){
-        outline: none;
-    }
-}
 .project-card {
     background: #1e1e2d;
     border-radius: 15px;
@@ -1665,4 +1660,12 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
+}
+*{
+    -webkit-tap-highlight-color: transparent;
+}
+@media(pointer: coarse){
+    :focus:not(:focus-visible){
+        outline: none !important;
+    }
 }
