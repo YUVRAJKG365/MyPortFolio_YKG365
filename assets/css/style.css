@@ -716,6 +716,27 @@ section {
     height: 100%;
     border: none;
 }
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(50px);
+    opacity: 0;
+    position: relative;
+    cursor: pointer;
+}
+
 .project-card.visible {
     transform: translateY(0);
     opacity: 1;
@@ -725,6 +746,16 @@ section {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border-color: var(--accent);
+}
+
+.project-image {
+    height: 200px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .project-image::before {
@@ -737,6 +768,34 @@ section {
     background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transform: rotate(30deg);
     animation: shine 3s infinite;
+}
+
+.project-image i {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tech-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
 }
 
 /* Project Modal */
@@ -1046,7 +1105,7 @@ section {
     overflow: hidden;
     min-width: 300px;
     max-width: 300px;
-    height: 400px;
+    height: auto;
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(10px);
@@ -1527,6 +1586,11 @@ footer {
     flex-direction: column;
 }
 
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
+}
+
 .project-image {
     height: 200px;
     display: flex;
@@ -1583,7 +1647,7 @@ footer {
 
 .certificate-link {
     display: inline-block;
-    color: #000000;
+    color: #6a11cb;
     text-decoration: none;
     font-weight: 600;
     margin-top: auto;
@@ -1591,7 +1655,7 @@ footer {
 }
 
 .certificate-link:hover {
-    color: #ffffff;
+    color: #8e2de2;
     text-decoration: underline;
 }
 
