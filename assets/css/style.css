@@ -1046,7 +1046,7 @@ section {
     overflow: hidden;
     min-width: 300px;
     max-width: 300px;
-    height: 400px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(10px);
@@ -1510,6 +1510,11 @@ footer {
     }
     .exp-modal-date {
         font-size: 1rem;
+    }
+}
+@media(pointer: coarse){
+    :focus:not(:focus-visible){
+        outline: none;
     }
 }
 .project-card {
