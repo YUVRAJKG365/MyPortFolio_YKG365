@@ -1640,6 +1640,64 @@
                 max-height: 85vh;
             }
         }
+        @media (max-width: 768px) {
+            /* Ensure close button is visible in experience modals */
+            .experience-modal .close-exp-modal {
+                display: flex !important;
+                opacity: 1 !important;
+                top: 15px;
+                right: 15px;
+                background: rgba(255, 45, 117, 0.8);
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+                z-index: 2100;
+            }
+
+            /* Make experience modal content scrollable */
+            .experience-modal-content {
+                padding-top: 60px; /* Give space for close button */
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Ensure experience modal is properly sized on mobile */
+            .experience-modal.active .experience-modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            /* Ensure close button is visible in resume modals */
+            .resume-modal .close-resume-modal {
+                display: flex !important;
+                opacity: 1 !important;
+                top: 15px;
+                right: 15px;
+                background: rgba(255, 45, 117, 0.8);
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+                z-index: 2100;
+            }
+
+            /* Make resume modal content scrollable */
+            .resume-modal-content {
+                padding-top: 60px; /* Give space for close button */
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+ 
+            /* Ensure resume modal is properly sized on mobile */
+            .resume-modal.active .resume-modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            /* Adjust iframe container in resume modal for mobile */
+            .resume-container {
+                height: 60vh;
+            }
+        }
         .project-card {
             background: #1e1e2d;
             border-radius: 15px;
