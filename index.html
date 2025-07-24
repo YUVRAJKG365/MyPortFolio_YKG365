@@ -9,363 +9,380 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Particles Background - Desktop Only -->
-    <div id="particles-js" class="desktop-only"></div>
+<!-- Particles Background - Desktop Only -->
+<div id="particles-js" class="desktop-only"></div>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">YKG</a>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#certifications">Certifications</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
+<!-- Header -->
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">YKG</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-links">
-            <a href="#about" onclick="closeMobileMenu()">About</a>
-            <a href="#skills" onclick="closeMobileMenu()">Skills</a>
-            <a href="#experience" onclick="closeMobileMenu()">Experience</a>
-            <a href="#projects" onclick="closeMobileMenu()">Projects</a>
-            <a href="#certifications" onclick="closeMobileMenu()">Certifications</a>
-            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-links">
+        <a href="#about" onclick="closeMobileMenu()">About</a>
+        <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+        <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+        <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+        <a href="#certifications" onclick="closeMobileMenu()">Certifications</a>
+        <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    </div>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Yuvraj Kumar Gond</h1>
+            <h2>AI/ML Engineer & Data Analyst</h2>
+            <p>Expert in designing scalable machine learning pipelines and automating data workflows. Skilled in advanced prompt engineering with leading LLMs and converting complex business challenges into actionable insights.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
         </div>
     </div>
-    <div class="overlay" id="overlay"></div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Yuvraj Kumar Gond</h1>
-                <h2>AI/ML Engineer & Data Analyst</h2>
-                <p>Expert in designing scalable machine learning pipelines and automating data workflows. Skilled in advanced prompt engineering with leading LLMs and converting complex business challenges into actionable insights.</p>
-                <a href="#contact" class="btn">Get In Touch</a>
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>AI/ML Engineer & Data Analyst</h3>
+                <p>I am an AI/ML Engineer and Data Analyst with a solid foundation in designing scalable machine learning pipelines and automating data workflows using Python, TensorFlow/Keras, Streamlit, and MySQL.</p>
+                <p>I specialize in advanced prompt engineering with leading LLMs including ChatGPT, Claude AI, Gemini AI, and DeepSeek. Skilled at converting complex business challenges into actionable insights that improve operational efficiency and drive informed decision-making.</p>
+                <p>Experienced in aligning AI solutions with strategic objectives across diverse industries, thriving in fast-paced, collaborative environments. Recognized for a research-driven mindset, creativity, and commitment to continuous learning.</p>
+                <p>I deliver impactful AI applications that address evolving business needs and drive innovation.</p>
+                <div class="about-buttons">
+                    <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="btn">Connect on LinkedIn</a>
+                    <a href="#" class="btn btn-resume" onclick="openResumeModal(); return false;">View My Resume</a>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="images/mpm.jpeg" alt="Yuvraj Kumar Gond" />
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>AI/ML Engineer & Data Analyst</h3>
-                    <p>I am an AI/ML Engineer and Data Analyst with a solid foundation in designing scalable machine learning pipelines and automating data workflows using Python, TensorFlow/Keras, Streamlit, and MySQL.</p>
-                    <p>I specialize in advanced prompt engineering with leading LLMs including ChatGPT, Claude AI, Gemini AI, and DeepSeek. Skilled at converting complex business challenges into actionable insights that improve operational efficiency and drive informed decision-making.</p>
-                    <p>Experienced in aligning AI solutions with strategic objectives across diverse industries, thriving in fast-paced, collaborative environments. Recognized for a research-driven mindset, creativity, and commitment to continuous learning.</p>
-                    <p>I deliver impactful AI applications that address evolving business needs and drive innovation.</p>
-                    <div class="about-buttons">
-                        <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="btn">Connect on LinkedIn</a>
-                        <a href="#" class="btn btn-resume" onclick="openResumeModal(); return false;">View My Resume</a>
-                    </div>
+<!-- Skills Section -->
+<section id="skills">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-brain"></i>
                 </div>
-                <div class="about-image">
-                    <img src="C:\Users\yuvra\PycharmProjects\MyPortFolio_YKG365\images\mpm.jpeg" alt="Yuvraj Kumar Gond" />
-                </div>
+                <h3>Gen AI & APIs</h3>
+                <p>Expert in advanced prompt engineering with ChatGPT, Claude AI, Gemini AI, and DeepSeek. Experience with OpenAI API, Gemini API, and IBM Watson Studio.</p>
             </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python</h3>
+                <p>Proficient in Python programming for data analysis, machine learning, and web development with framework Streamlit and Flask API. Experience with Pandas, NumPy, scikit-learn, TensorFlow/Keras.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>SQL & Databases</h3>
+                <p>Skilled in SQL querying, database design, and management. Experience with MySQL, PostgreSQL and database backend integration.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI & Machine Learning</h3>
+                <p>Experience in developing ML models, neural networks and implementing AI solutions. Skilled in TensorFlow/Keras, OpenCV, and scikit-learn.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Prompt Engineering</h3>
+                <p>Expert in optimizing generative AI workflows through advanced prompt engineering, boosting content generation speed by 48%.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Data Visualization</h3>
+                <p>Proficient in creating interactive dashboards and visualizations using Streamlit, Plotly, and Matplotlib.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>IDEs</h3>
+                <p>Experience of using various Integrated Development Environments (IDEs) such as <b>PyCharm, Visual Studio Code,Jupyter Notebook and WebStorm</b> for efficient coding and debugging.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-file-word"></i>
+                </div>
+                <h3>Microsoft Office with Copilot</h3>
+                <p>Hands-on experience with Microsoft Office Suite enhanced by Copilot AI for smarter Business Workflows, Creative Design Assistance and Productivity Optimization.</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Gen AI & APIs</h3>
-                    <p>Expert in advanced prompt engineering with ChatGPT, Claude AI, Gemini AI, and DeepSeek. Experience with OpenAI API, Gemini API, and IBM Watson Studio.</p>
-                </div>
+<!-- Experience Section -->
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Work Experience</h2>
 
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python</h3>
-                    <p>Proficient in Python programming for data analysis, machine learning, and web development. Experience with Pandas, NumPy, scikit-learn, TensorFlow/Keras.</p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>SQL & Databases</h3>
-                    <p>Skilled in SQL querying, database design, and management. Experience with MySQL and database backend integration.</p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Experience in developing ML models, neural networks, and implementing AI solutions. Skilled in TensorFlow/Keras, OpenCV, and scikit-learn.</p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Prompt Engineering</h3>
-                    <p>Expert in optimizing generative AI workflows through advanced prompt engineering, boosting content generation speed by 48%.</p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Data Visualization</h3>
-                    <p>Proficient in creating interactive dashboards and visualizations using Streamlit, Plotly, and Matplotlib.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            
-            <!-- Desktop Timeline -->
-            <div class="timeline">
-                <div class="timeline-item" onmouseenter="openExpModal('shadowfox')">
-                    <div class="timeline-date">FEB 2025</div>
-                    <h3 class="timeline-title">AI & Machine Learning Intern</h3>
-                    <div class="timeline-company">ShadowFox</div>
-                    <p>Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production, ensuring up-to-date performance and improved prediction accuracy—starting with an initial 89% accuracy.</p>
-                </div>
-
-                <div class="timeline-item" onmouseenter="openExpModal('ibm-csbbox')">
-                    <div class="timeline-date">DEC - JAN 2025</div>
-                    <h3 class="timeline-title">Prompt Engineering Intern</h3>
-                    <div class="timeline-company">IBM CSBBOX</div>
-                    <p>Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering, boosting content generation speed by 48%. Additionally, fine-tuned domain-specific LLMs in Watson Studio to improve response relevance and reduce iteration time.</p>
-                </div>
-
-                <div class="timeline-item" onmouseenter="openExpModal('ibm-csbox')">
-                    <div class="timeline-date">JUNE - AUG 2024</div>
-                    <h3 class="timeline-title">Data Analytics Intern, Team Lead</h3>
-                    <div class="timeline-company">IBM CSBOX</div>
-                    <p>Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies. Managed the complete analytics pipeline—from data cleaning and SQL querying to EDA, visualization, and ML model development using Python, Pandas, NumPy, Plotly, and scikit-learn. Delivered insights that improved operational efficiency by 20% and accelerated decision-making.</p>
-                </div>
-
-                <div class="timeline-item" onmouseenter="openExpModal('techgyan')">
-                    <div class="timeline-date">JUNE - JULY 2024</div>
-                    <h3 class="timeline-title">Advanced Python Programming</h3>
-                    <div class="timeline-company">TechGyan</div>
-                    <p>Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration—under the guidance of IIT Bombay experts, and applied these skills to develop a College Management System solely using Python and MySQL.</p>
-                </div>
-            </div>
-            
-            <!-- Mobile Timeline -->
-            <div class="mobile-timeline">
-                <div class="mobile-timeline-item" onclick="openExpModal('shadowfox')">
-                    <div class="mobile-timeline-date">FEB 2025</div>
-                    <h3 class="mobile-timeline-title">AI & Machine Learning Intern</h3>
-                    <div class="mobile-timeline-company">ShadowFox</div>
-                    <p>Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production, ensuring up-to-date performance and improved prediction accuracy—starting with an initial 89% accuracy.</p>
-                </div>
-
-                <div class="mobile-timeline-item" onclick="openExpModal('ibm-csbbox')">
-                    <div class="mobile-timeline-date">DEC - JAN 2025</div>
-                    <h3 class="mobile-timeline-title">Prompt Engineering Intern</h3>
-                    <div class="mobile-timeline-company">IBM CSBBOX</div>
-                    <p>Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering, boosting content generation speed by 48%. Additionally, fine-tuned domain-specific LLMs in Watson Studio to improve response relevance and reduce iteration time.</p>
-                </div>
-
-                <div class="mobile-timeline-item" onclick="openExpModal('ibm-csbox')">
-                    <div class="mobile-timeline-date">JUNE - AUG 2024</div>
-                    <h3 class="mobile-timeline-title">Data Analytics Intern, Team Lead</h3>
-                    <div class="mobile-timeline-company">IBM CSBOX</div>
-                    <p>Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies. Managed the complete analytics pipeline—from data cleaning and SQL querying to EDA, visualization, and ML model development using Python, Pandas, NumPy, Plotly, and scikit-learn. Delivered insights that improved operational efficiency by 20% and accelerated decision-making.</p>
-                </div>
-
-                <div class="mobile-timeline-item" onclick="openExpModal('techgyan')">
-                    <div class="mobile-timeline-date">JUNE - JULY 2024</div>
-                    <h3 class="mobile-timeline-title">Advanced Python Programming</h3>
-                    <div class="mobile-timeline-company">TechGyan</div>
-                    <p>Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration—under the guidance of IIT Bombay experts, and applied these skills to develop a College Management System solely using Python and MySQL.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="experience.html" class="btn">View Full Experience</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Modals -->
-    <div class="experience-modal" id="shadowfox-modal">
-        <div class="experience-modal-content">
-            <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
-            <h2 class="exp-modal-title">AI & Machine Learning Intern</h2>
-            <div class="exp-modal-company">ShadowFox</div>
-            <div class="exp-modal-date">FEB 2025</div>
-            <div class="exp-modal-description">
+        <!-- Desktop Timeline -->
+        <div class="timeline">
+            <div class="timeline-item" onmouseenter="openExpModal('shadowfox')">
+                <div class="timeline-date">FEB 2025</div>
+                <h3 class="timeline-title">AI & Machine Learning Intern</h3>
+                <div class="timeline-company">ShadowFox</div>
                 <p>Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production, ensuring up-to-date performance and improved prediction accuracy—starting with an initial 89% accuracy.</p>
-                <p>The system used a convolutional neural network (CNN) architecture with transfer learning techniques to achieve high accuracy with relatively small training datasets. Implemented a feedback loop where user interactions with the system were used to continuously improve the model's performance.</p>
             </div>
-            <div class="exp-modal-docs">
-                <h3>Supporting Documents</h3>
-                <div class="exp-doc-container">
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID/preview" allowfullscreen></iframe>
-                    </div>
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="experience-modal" id="ibm-csbbox-modal">
-        <div class="experience-modal-content">
-            <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
-            <h2 class="exp-modal-title">Prompt Engineering Intern</h2>
-            <div class="exp-modal-company">IBM CSBBOX</div>
-            <div class="exp-modal-date">DEC - JAN 2025</div>
-            <div class="exp-modal-description">
+            <div class="timeline-item" onmouseenter="openExpModal('ibm-csbbox')">
+                <div class="timeline-date">DEC - JAN 2025</div>
+                <h3 class="timeline-title">Prompt Engineering Intern</h3>
+                <div class="timeline-company">IBM CSBBOX</div>
                 <p>Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering, boosting content generation speed by 48%. Additionally, fine-tuned domain-specific LLMs in Watson Studio to improve response relevance and reduce iteration time.</p>
-                <p>Developed a comprehensive prompt engineering framework that standardized prompt creation across teams, resulting in more consistent outputs and reduced time spent on prompt iteration. Created documentation and training materials to help other team members improve their prompt engineering skills.</p>
             </div>
-            <div class="exp-modal-docs">
-                <h3>Supporting Documents</h3>
-                <div class="exp-doc-container">
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID/preview" allowfullscreen></iframe>
-                    </div>
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="experience-modal" id="ibm-csbox-modal">
-        <div class="experience-modal-content">
-            <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
-            <h2 class="exp-modal-title">Data Analytics Intern, Team Lead</h2>
-            <div class="exp-modal-company">IBM CSBOX</div>
-            <div class="exp-modal-date">JUNE - AUG 2024</div>
-            <div class="exp-modal-description">
+            <div class="timeline-item" onmouseenter="openExpModal('ibm-csbox')">
+                <div class="timeline-date">JUNE - AUG 2024</div>
+                <h3 class="timeline-title">Data Analytics Intern, Team Lead</h3>
+                <div class="timeline-company">IBM CSBOX</div>
                 <p>Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies. Managed the complete analytics pipeline—from data cleaning and SQL querying to EDA, visualization, and ML model development using Python, Pandas, NumPy, Plotly, and scikit-learn. Delivered insights that improved operational efficiency by 20% and accelerated decision-making.</p>
-                <p>Implemented automated data validation checks that reduced data cleaning time by 35%. Created interactive dashboards that allowed stakeholders to explore the data and gain insights without technical expertise. Developed a predictive model that forecasted sustainability metrics with 92% accuracy.</p>
             </div>
-            <div class="exp-modal-docs">
-                <h3>Supporting Documents</h3>
-                <div class="exp-doc-container">
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID/preview" allowfullscreen></iframe>
-                    </div>
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="experience-modal" id="techgyan-modal">
-        <div class="experience-modal-content">
-            <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
-            <h2 class="exp-modal-title">Advanced Python Programming</h2>
-            <div class="exp-modal-company">TechGyan</div>
-            <div class="exp-modal-date">JUNE - JULY 2024</div>
-            <div class="exp-modal-description">
+            <div class="timeline-item" onmouseenter="openExpModal('techgyan')">
+                <div class="timeline-date">JUNE - JULY 2024</div>
+                <h3 class="timeline-title">Advanced Python Programming</h3>
+                <div class="timeline-company">TechGyan</div>
                 <p>Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration—under the guidance of IIT Bombay experts, and applied these skills to develop a College Management System solely using Python and MySQL.</p>
-                <p>The College Management System included modules for student registration, course management, attendance tracking, and grade reporting. Implemented secure authentication, data validation, and reporting features. The system was designed to be extensible, allowing for additional modules to be added as needed.</p>
             </div>
-            <div class="exp-modal-docs">
-                <h3>Supporting Documents</h3>
-                <div class="exp-doc-container">
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
-                    </div>
-                    <div class="exp-doc-item">
-                        <iframe src="https://drive.google.com/file/d/YOUR_PROJECT_DEMO_ID/preview" allowfullscreen></iframe>
-                    </div>
+        </div>
+
+        <!-- Mobile Timeline -->
+        <div class="mobile-timeline">
+            <div class="mobile-timeline-item" onclick="openExpModal('shadowfox')">
+                <div class="mobile-timeline-date">FEB 2025</div>
+                <h3 class="mobile-timeline-title">AI & Machine Learning Intern</h3>
+                <div class="mobile-timeline-company">ShadowFox</div>
+                <p>Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production, ensuring up-to-date performance and improved prediction accuracy—starting with an initial 89% accuracy.</p>
+            </div>
+
+            <div class="mobile-timeline-item" onclick="openExpModal('ibm-csbbox')">
+                <div class="mobile-timeline-date">DEC - JAN 2025</div>
+                <h3 class="mobile-timeline-title">Prompt Engineering Intern</h3>
+                <div class="mobile-timeline-company">IBM CSBBOX</div>
+                <p>Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering, boosting content generation speed by 48%. Additionally, fine-tuned domain-specific LLMs in Watson Studio to improve response relevance and reduce iteration time.</p>
+            </div>
+
+            <div class="mobile-timeline-item" onclick="openExpModal('ibm-csbox')">
+                <div class="mobile-timeline-date">JUNE - AUG 2024</div>
+                <h3 class="mobile-timeline-title">Data Analytics Intern, Team Lead</h3>
+                <div class="mobile-timeline-company">IBM CSBOX</div>
+                <p>Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies. Managed the complete analytics pipeline—from data cleaning and SQL querying to EDA, visualization, and ML model development using Python, Pandas, NumPy, Plotly, and scikit-learn. Delivered insights that improved operational efficiency by 20% and accelerated decision-making.</p>
+            </div>
+
+            <div class="mobile-timeline-item" onclick="openExpModal('techgyan')">
+                <div class="mobile-timeline-date">JUNE - JULY 2024</div>
+                <h3 class="mobile-timeline-title">Advanced Python Programming</h3>
+                <div class="mobile-timeline-company">TechGyan</div>
+                <p>Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration—under the guidance of IIT Bombay experts, and applied these skills to develop a College Management System solely using Python and MySQL.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="experience.html" class="btn">View Full Experience</a>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Modals -->
+<div class="experience-modal" id="shadowfox-modal">
+    <div class="experience-modal-content">
+        <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
+        <h2 class="exp-modal-title">AI & Machine Learning Intern</h2>
+        <div class="exp-modal-company">ShadowFox</div>
+        <div class="exp-modal-date">FEB 2025</div>
+        <div class="exp-modal-description">
+            <p>Developed a real-time Facial Emotion Recognition System featuring a self-learning model that continuously adapts by ingesting new user data in production, ensuring up-to-date performance and improved prediction accuracy—starting with an initial 89% accuracy.</p>
+            <p>The system used a convolutional neural network (CNN) architecture with transfer learning techniques to achieve high accuracy with relatively small training datasets. Implemented a feedback loop where user interactions with the system were used to continuously improve the model's performance.</p>
+        </div>
+        <div class="exp-modal-docs">
+            <h3>Supporting Documents</h3>
+            <div class="exp-doc-container">
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID/preview" allowfullscreen></iframe>
+                </div>
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card" onmouseenter="openModal('self-learning-facial-emotion-recognition')">
-                    <div class="project-image">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Self-Learning Facial Emotion Recognition System</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">TensorFlow/Keras</span>
-                            <span class="tech-tag">Streamlit</span>
-                        </div>
-                        <p>Developed a production-ready ML application that captures camera input, classifies facial expressions in real time with 89% initial accuracy, and employs a self-learning neural network that retrains on newly collected data to continuously improve prediction performance.</p>
-                    </div>
+<div class="experience-modal" id="ibm-csbbox-modal">
+    <div class="experience-modal-content">
+        <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
+        <h2 class="exp-modal-title">Prompt Engineering Intern</h2>
+        <div class="exp-modal-company">IBM CSBBOX</div>
+        <div class="exp-modal-date">DEC - JAN 2025</div>
+        <div class="exp-modal-description">
+            <p>Optimized generative AI workflows using ChatGPT, DALLE, Claude AI, and IBM Watson Studio through advanced prompt engineering, boosting content generation speed by 48%. Additionally, fine-tuned domain-specific LLMs in Watson Studio to improve response relevance and reduce iteration time.</p>
+            <p>Developed a comprehensive prompt engineering framework that standardized prompt creation across teams, resulting in more consistent outputs and reduced time spent on prompt iteration. Created documentation and training materials to help other team members improve their prompt engineering skills.</p>
+        </div>
+        <div class="exp-modal-docs">
+            <h3>Supporting Documents</h3>
+            <div class="exp-doc-container">
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID/preview" allowfullscreen></iframe>
                 </div>
-
-                <div class="project-card" onmouseenter="openModal('exploratory-data-analysis-platform')">
-                    <div class="project-image">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Exploratory Data Analysis Platform</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Streamlit</span>
-                            <span class="tech-tag">Gemini API</span>
-                            <span class="tech-tag">Plotly</span>
-                        </div>
-                        <p>Built an interactive dashboard that automates data ingestion, cleansing, and feature engineering. Integrated LLM-powered document intelligence to extract text and images from various document formats, executed predictive models, and visualized results with dynamic charts.</p>
-                    </div>
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
                 </div>
-
-                <div class="project-card" onmouseenter="openModal('automated-hospital-management-system')">
-                    <div class="project-image">
-                        <i class="fas fa-hospital"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Automated Hospital Management System</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Streamlit</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">OpenAI API</span>
-                        </div>
-                        <p>Engineered a full-stack solution for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling, and discharge processing. Features AI-driven chatbots for patient inquiries and real-time analytics dashboards.</p>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="projects.html" class="btn">View All Projects</a>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Project Modals -->
+<div class="experience-modal" id="ibm-csbox-modal">
+    <div class="experience-modal-content">
+        <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
+        <h2 class="exp-modal-title">Data Analytics Intern, Team Lead</h2>
+        <div class="exp-modal-company">IBM CSBOX</div>
+        <div class="exp-modal-date">JUNE - AUG 2024</div>
+        <div class="exp-modal-description">
+            <p>Led a 5-member team to analyze real-world sustainability datasets, identifying inefficiencies and recommending data-driven strategies. Managed the complete analytics pipeline—from data cleaning and SQL querying to EDA, visualization, and ML model development using Python, Pandas, NumPy, Plotly, and scikit-learn. Delivered insights that improved operational efficiency by 20% and accelerated decision-making.</p>
+            <p>Implemented automated data validation checks that reduced data cleaning time by 35%. Created interactive dashboards that allowed stakeholders to explore the data and gain insights without technical expertise. Developed a predictive model that forecasted sustainability metrics with 92% accuracy.</p>
+        </div>
+        <div class="exp-modal-docs">
+            <h3>Supporting Documents</h3>
+            <div class="exp-doc-container">
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_OFFER_LETTER_ID/preview" allowfullscreen></iframe>
+                </div>
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="experience-modal" id="techgyan-modal">
+    <div class="experience-modal-content">
+        <span class="close-exp-modal" onclick="closeExpModal()">&times;</span>
+        <h2 class="exp-modal-title">Advanced Python Programming</h2>
+        <div class="exp-modal-company">TechGyan</div>
+        <div class="exp-modal-date">JUNE - JULY 2024</div>
+        <div class="exp-modal-description">
+            <p>Learned advanced Python programming & techniques—including GUI development, email automation, and database backend integration—under the guidance of IIT Bombay experts, and applied these skills to develop a College Management System solely using Python and MySQL.</p>
+            <p>The College Management System included modules for student registration, course management, attendance tracking, and grade reporting. Implemented secure authentication, data validation, and reporting features. The system was designed to be extensible, allowing for additional modules to be added as needed.</p>
+        </div>
+        <div class="exp-modal-docs">
+            <h3>Supporting Documents</h3>
+            <div class="exp-doc-container">
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_CERTIFICATE_ID/preview" allowfullscreen></iframe>
+                </div>
+                <div class="exp-doc-item">
+                    <iframe src="https://drive.google.com/file/d/YOUR_PROJECT_DEMO_ID/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" onmouseenter="openModal('self-learning-facial-emotion-recognition')">
+                <div class="project-image">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Self-Learning Facial Emotion Recognition System</h3>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">TensorFlow/Keras</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                    <p>Developed a production-ready ML application that captures camera input, classifies facial expressions in real time with 89% initial accuracy, and employs a self-learning neural network that retrains on newly collected data to continuously improve prediction performance.</p>
+                </div>
+            </div>
+
+            <div class="project-card" onmouseenter="openModal('exploratory-data-analysis-platform')">
+                <div class="project-image">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Exploratory Data Analysis Platform</h3>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Gemini API</span>
+                        <span class="tech-tag">Plotly</span>
+                    </div>
+                    <p>Built an interactive dashboard that automates data ingestion, cleansing, and feature engineering. Integrated LLM-powered document intelligence to extract text and images from various document formats, executed predictive models, and visualized results with dynamic charts.</p>
+                </div>
+            </div>
+
+            <div class="project-card" onmouseenter="openModal('automated-hospital-management-system')">
+                <div class="project-image">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Automated Hospital Management System</h3>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">OpenAI API</span>
+                    </div>
+                    <p>Engineered a full-stack solution for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling, and discharge processing. Features AI-driven chatbots for patient inquiries and real-time analytics dashboards.</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="projects.html" class="btn">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Project Modals -->
 <div class="project-modal" id="self-learning-facial-emotion-recognition-modal">
     <div class="project-modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -373,7 +390,12 @@
             <div class="modal-video-section">
                 <div class="modal-video-container">
                     <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
-                    <button class="restart-video-btn" onclick="restartVideo('self-learning-facial-emotion-recognition-modal')">
+                </div>
+                <div class="modal-video-controls">
+                    <button class="video-control-btn" onclick="playPauseVideo('self-learning-facial-emotion-recognition-modal')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" onclick="restartVideo('self-learning-facial-emotion-recognition-modal')">
                         <i class="fas fa-redo"></i>
                     </button>
                 </div>
@@ -403,8 +425,13 @@
         <div class="modal-grid">
             <div class="modal-video-section">
                 <div class="modal-video-container">
-                    <iframe class="modal-video" src="https://github.com/YUVRAJKG365/Hospital-Management-System" allowfullscreen></iframe>
-                    <button class="restart-video-btn" onclick="restartVideo('exploratory-data-analysis-platform-modal')">
+                    <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
+                </div>
+                <div class="modal-video-controls">
+                    <button class="video-control-btn" onclick="playPauseVideo('exploratory-data-analysis-platform-modal')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" onclick="restartVideo('exploratory-data-analysis-platform-modal')">
                         <i class="fas fa-redo"></i>
                     </button>
                 </div>
@@ -435,7 +462,12 @@
             <div class="modal-video-section">
                 <div class="modal-video-container">
                     <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
-                    <button class="restart-video-btn" onclick="restartVideo('automated-hospital-management-system-modal')">
+                </div>
+                <div class="modal-video-controls">
+                    <button class="video-control-btn" onclick="playPauseVideo('automated-hospital-management-system-modal')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" onclick="restartVideo('automated-hospital-management-system-modal')">
                         <i class="fas fa-redo"></i>
                     </button>
                 </div>
@@ -458,21 +490,22 @@
         </div>
     </div>
 </div>
-    <!-- Resume Modal -->
-    <div class="resume-modal" id="resume-modal">
-        <div class="resume-modal-content">
-            <span class="close-resume-modal" onclick="closeResumeModal()">&times;</span>
-            <h2 class="modal-title">My Resume</h2>
-            <div class="resume-container">
-                <iframe src="https://drive.google.com/file/d/YOUR_RESUME_ID/preview" allowfullscreen></iframe>
-            </div>
-            <div class="resume-download">
-                <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_ID" class="resume-download-btn">
-                    <i class="fas fa-download"></i> Download Resume
-                </a>
-            </div>
+
+<!-- Resume Modal -->
+<div class="resume-modal" id="resume-modal">
+    <div class="resume-modal-content">
+        <span class="close-resume-modal" onclick="closeResumeModal()">&times;</span>
+        <h2 class="modal-title">My Resume</h2>
+        <div class="resume-container">
+            <iframe src="https://drive.google.com/file/d/YOUR_RESUME_ID/preview" allowfullscreen></iframe>
+        </div>
+        <div class="resume-download">
+            <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_ID" class="resume-download-btn">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
         </div>
     </div>
+</div>
 
 <!-- Certifications Section -->
 <section id="certifications">
@@ -591,121 +624,121 @@
     </div>
 </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Phone</h3>
-                            <p>+91 8487047066</p>
-                        </div>
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Email</h3>
-                            <p>yuvrajgona365@gmail.com</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Location</h3>
-                            <p>Haridwar, Uttarakhand, India</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>LinkedIn</h3>
-                            <p>linkedin.com/in/yuvraj-kumar-gond</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>GitHub</h3>
-                            <p>github.com/YUVRAJKG365</p>
-                        </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>+91 8487047066</p>
                     </div>
                 </div>
 
-                <!--form Section-->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p>yuvrajgona365@gmail.com</p>
+                    </div>
+                </div>
 
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/xblkdkep" method="POST">
-                        <input type="hidden" name="_replyto" value="" id="replyTo">
-                        <input type="hidden" name="_subject" value="New Contact Form Submission">
-                        
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Location</h3>
+                        <p>Haridwar, Uttarakhand, India</p>
+                    </div>
+                </div>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>LinkedIn</h3>
+                        <p>linkedin.com/in/yuvraj-kumar-gond</p>
+                    </div>
+                </div>
 
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn">Send Message</button>
-                        
-                        <div id="formStatus" class="status-message"></div>
-                    </form>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>GitHub</h3>
+                        <p>github.com/YUVRAJKG365</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/YUVRAJKG365" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:yuvrajgona365@gmail.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="tel:+918487047066" class="social-link">
-                    <i class="fas fa-phone"></i>
-                </a>
+            <!--form Section-->
+
+            <div class="contact-form">
+                <form id="contactForm" action="https://formspree.io/f/xblkdkep" method="POST">
+                    <input type="hidden" name="_replyto" value="" id="replyTo">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Send Message</button>
+
+                    <div id="formStatus" class="status-message"></div>
+                </form>
             </div>
-            <p class="copyright">© 2025 Yuvraj Kumar Gond. All Rights Reserved.</p>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="assets/js/script.js"></script>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="social-link">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/YUVRAJKG365" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:yuvrajgona365@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+918487047066" class="social-link">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+        <p class="copyright">© 2025 Yuvraj Kumar Gond. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
