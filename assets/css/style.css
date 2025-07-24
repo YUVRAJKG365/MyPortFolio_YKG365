@@ -1109,7 +1109,7 @@ section {
     overflow: hidden;
     min-width: 300px;
     max-width: 300px;
-    height: auto;
+    height: auto; /* Changed from fixed height to auto */
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(10px);
@@ -1133,6 +1133,7 @@ section {
     justify-content: center;
     background: linear-gradient(45deg, #1a1a2e, #16213e);
     position: relative;
+    flex-shrink: 0; /* Prevent image from growing */
 }
 
 .certificate-image img {
@@ -1151,18 +1152,33 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 180px; /* Minimum height for content area */
 }
 
 .certificate-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: var(--accent);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* ✅ Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 3em;
 }
+
 
 .certificate-issuer {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1; /* ✅ Standard property */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .certificate-date {
@@ -1172,7 +1188,6 @@ section {
 }
 
 .certificate-link {
-    margin-top: auto;
     display: inline-block;
     padding: 8px 15px;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
@@ -1182,6 +1197,8 @@ section {
     font-size: 0.9rem;
     text-align: center;
     transition: var(--transition);
+    width: 100%; /* Make button full width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .certificate-link:hover {
@@ -1551,6 +1568,24 @@ footer {
     section {
         padding: 60px 0;
     }
+    .certificate-card {
+        min-width: 280px;
+        max-width: 280px;
+    }
+    
+    .certificate-title {
+        font-size: 1.1rem;
+        min-height: 2.8em; /* Slightly smaller for mobile */
+    }
+    
+    .certificate-content {
+        min-height: 160px; /* Slightly smaller minimum height */
+        padding: 15px;
+    }
+    
+    .certificate-link {
+        padding: 10px 15px; /* Slightly larger tap target */
+    }
 }
 
 @media (max-width: 576px) {
@@ -1664,17 +1699,13 @@ footer {
     flex: 1;
 }
 
-.certificate-link {
-    display: inline-block;
-    color: #6a11cb;
-    text-decoration: none;
-    font-weight: 600;
+.certificate-link-container {
     margin-top: auto;
-    transition: all 0.3s ease;
+    padding-top: 15px; /* Add some space above the button */
 }
 
 .certificate-link:hover {
-    color: #8e2de2;
+    color: #ffffff;
     text-decoration: underline;
 }
 
