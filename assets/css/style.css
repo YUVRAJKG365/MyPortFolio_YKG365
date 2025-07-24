@@ -1533,22 +1533,44 @@ footer {
         padding: 60px 0;
     }
     .certificate-card {
-        height: auto; /* Let the card height adjust to content */
-        min-height: 380px; /* But maintain a minimum height */
+        height: 400px; /* Fixed height for all cards */
+        min-height: auto; /* Remove min-height */
     }
     
     .certificate-content {
-        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Take full height of card */
+        min-height: 0; /* Allow content to scroll */
     }
     
     .certificate-title {
-        font-size: 1.1rem;
-        line-clamp: 3;
-        -webkit-line-clamp: 3; /* Allow more lines on mobile */
+        -webkit-line-clamp: 2; /* Show max 2 lines */
+        line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        margin-bottom: 10px;
+        flex-shrink: 0; /* Don't allow title to shrink */
+    }
+    
+    .certificate-details {
+        flex: 1;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+    
+    .certificate-issuer,
+    .certificate-date {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .certificate-link {
-        margin-top: 15px; /* Add some space above the button */
+        margin-top: auto; /* Push button to bottom */
+        flex-shrink: 0; /* Don't allow button to shrink */
     }
 }
 
