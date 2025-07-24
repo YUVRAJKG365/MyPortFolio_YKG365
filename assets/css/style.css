@@ -1083,6 +1083,7 @@ section {
     padding: 20px 0;
     transition: transform 0.3s ease-out;
 }
+
 .certificate-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
@@ -1131,30 +1132,18 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 0;
 }
 
 .certificate-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: var(--accent);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* For WebKit-based browsers */
-    line-clamp: 2;          /* ✅ Standard syntax */
-    -webkit-box-orient: vertical;
-    word-break: break-word;
 }
-
 
 .certificate-issuer {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .certificate-date {
@@ -1174,7 +1163,6 @@ section {
     font-size: 0.9rem;
     text-align: center;
     transition: var(--transition);
-    flex-shrink: 0; /* Prevent the button from shrinking */
 }
 
 .certificate-link:hover {
@@ -1473,6 +1461,12 @@ footer {
     .contact-info {
         margin-bottom: 40px;
     }
+    
+    /* Certifications */
+    .certificate-card {
+        min-width: 280px;
+        height: 380px;
+    }
     /* Cards Visibility */
     .project-card,
     .certificate-card,
@@ -1532,46 +1526,7 @@ footer {
     section {
         padding: 60px 0;
     }
-    .certificate-card {
-        height: 400px; /* Fixed height for all cards */
-        min-height: auto; /* Remove min-height */
-    }
     
-    .certificate-content {
-        display: flex;
-        flex-direction: column;
-        height: 100%; /* Take full height of card */
-        min-height: 0; /* Allow content to scroll */
-    }
-    
-    .certificate-title {
-        -webkit-line-clamp: 2; /* Show max 2 lines */
-        line-clamp: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        margin-bottom: 10px;
-        flex-shrink: 0; /* Don't allow title to shrink */
-    }
-    
-    .certificate-details {
-        flex: 1;
-        overflow: hidden;
-        margin-bottom: 15px;
-    }
-    
-    .certificate-issuer,
-    .certificate-date {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .certificate-link {
-        margin-top: auto; /* Push button to bottom */
-        flex-shrink: 0; /* Don't allow button to shrink */
-    }
 }
 
 @media (max-width: 576px) {
