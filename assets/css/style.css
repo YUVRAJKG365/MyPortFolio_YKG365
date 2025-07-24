@@ -1131,18 +1131,30 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
 .certificate-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: var(--accent);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* For WebKit-based browsers */
+    line-clamp: 2;          /* ✅ Standard syntax */
+    -webkit-box-orient: vertical;
+    word-break: break-word;
 }
+
 
 .certificate-issuer {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .certificate-date {
@@ -1162,6 +1174,7 @@ section {
     font-size: 0.9rem;
     text-align: center;
     transition: var(--transition);
+    flex-shrink: 0; /* Prevent the button from shrinking */
 }
 
 .certificate-link:hover {
@@ -1460,12 +1473,6 @@ footer {
     .contact-info {
         margin-bottom: 40px;
     }
-    
-    /* Certifications */
-    .certificate-card {
-        min-width: 280px;
-        height: 380px;
-    }
     /* Cards Visibility */
     .project-card,
     .certificate-card,
@@ -1525,7 +1532,24 @@ footer {
     section {
         padding: 60px 0;
     }
+    .certificate-card {
+        height: auto; /* Let the card height adjust to content */
+        min-height: 380px; /* But maintain a minimum height */
+    }
     
+    .certificate-content {
+        padding: 15px;
+    }
+    
+    .certificate-title {
+        font-size: 1.1rem;
+        line-clamp: 3;
+        -webkit-line-clamp: 3; /* Allow more lines on mobile */
+    }
+    
+    .certificate-link {
+        margin-top: 15px; /* Add some space above the button */
+    }
 }
 
 @media (max-width: 576px) {
