@@ -872,13 +872,15 @@ section {
     gap: 30px;
 }
 
+/* Video controls styling */
 .modal-video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
     border-radius: 10px;
     background: #000;
+    margin-bottom: 0; /* Remove margin since we're removing buttons below */
 }
 
 .modal-video {
@@ -889,7 +891,6 @@ section {
     height: 100%;
     border: none;
 }
-
 .modal-video-controls {
     display: flex;
     justify-content: center;
@@ -914,7 +915,10 @@ section {
 .video-control-btn:hover {
     background: var(--accent);
 }
-
+/* Hide the old video controls */
+.modal-video-controls {
+    display: none !important;
+}
 .modal-content {
     display: flex;
     flex-direction: column;
