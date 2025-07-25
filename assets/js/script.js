@@ -45,8 +45,48 @@ function initParticles() {
     }
 }
 
-// Initialize particles on load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
+    const phrases = [
+        "I'm an Data Analyst",
+        "I'm an AI/ML Engineer",
+        "I'm an Prompt Engineer",
+        "I'm an Python Developer",
+        "I'm an Full Stack Developer"
+    ];
+
+    const typedText = document.getElementById("typed-text");
+    const typingSpeed = 100;   // in ms
+    const erasingSpeed = 50;   // in ms
+    const delayBetweenPhrases = 1500;
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            typedText.textContent = currentPhrase.substring(0, charIndex--);
+            if (charIndex < 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(type, erasingSpeed);
+            }
+        } else {
+            typedText.textContent = currentPhrase.substring(0, charIndex++);
+            if (charIndex > currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(type, delayBetweenPhrases);
+            } else {
+                setTimeout(type, typingSpeed);
+            }
+        }
+    }
+
+    type(); // start typing
     // Only load particles.js on desktop
     if (window.innerWidth > 768) {
         initParticles();
@@ -135,7 +175,7 @@ window.addEventListener("scroll", function() {
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
