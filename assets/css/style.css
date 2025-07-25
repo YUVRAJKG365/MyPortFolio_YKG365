@@ -1609,7 +1609,7 @@ footer {
         flex-shrink: 0;
     }
     .typing-wrapper {
-        height: 1.7rem; /* Adjust height for mobile */
+        height: 2rem; /* Adjust height for mobile */
     }
     
     .typed {
