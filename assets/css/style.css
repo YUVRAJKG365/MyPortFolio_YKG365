@@ -1609,11 +1609,11 @@ footer {
         flex-shrink: 0;
     }
     .typing-wrapper {
-        height: 1.5rem; /* Adjust height for mobile */
+        height: 1.7rem; /* Adjust height for mobile */
     }
     
     .typed {
-        font-size: 1.5rem; /* Match mobile font size */
+        font-size: 1.7rem; /* Match mobile font size */
     }
     
 }
@@ -1660,11 +1660,11 @@ footer {
         font-size: 1rem;
     }
     .typing-wrapper {
-        height: 1.3rem; /* Smaller screens */
+        height: 1.5rem; /* Smaller screens */
     }
     
     .typed-text {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 }
 .project-card {
