@@ -327,13 +327,42 @@ section {
     gap: 50px;
     align-items: center;
 }
-
 .about-text h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
     color: var(--accent);
+    position: relative;
+    display: inline-block;
 }
 
+.typing-wrapper {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color, white);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    height: 1.8rem; /* Slightly increased height */
+    line-height: 1.5; /* More natural line height */
+}
+
+.typed-text {
+    white-space: nowrap;
+    overflow: visible; /* Changed from hidden to visible */
+    display: inline-block;
+    min-width: 160px;
+    vertical-align: middle; /* Better vertical alignment */
+    line-height: normal; /* Let it use natural line height */
+    height: auto; /* Remove fixed height */
+    position: relative;
+    /* Removed top adjustment */
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
 .about-text p {
     margin-bottom: 20px;
     font-size: 1.1rem;
@@ -1579,6 +1608,13 @@ footer {
         text-align: center;
         flex-shrink: 0;
     }
+    .typing-wrapper {
+        height: 1.5rem; /* Adjust height for mobile */
+    }
+    
+    .typed {
+        font-size: 1.5rem; /* Match mobile font size */
+    }
     
 }
 
@@ -1622,6 +1658,13 @@ footer {
     }
     .exp-modal-date {
         font-size: 1rem;
+    }
+    .typing-wrapper {
+        height: 1.3rem; /* Smaller screens */
+    }
+    
+    .typed-text {
+        font-size: 1.3rem;
     }
 }
 .project-card {
