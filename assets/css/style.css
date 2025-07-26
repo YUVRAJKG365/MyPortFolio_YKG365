@@ -743,12 +743,11 @@ section {
     border: none;
 }
 
-/* Grid Layout */
+/* Projects Section */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
-    margin-top: 40px;
 }
 
 .project-card {
@@ -769,6 +768,22 @@ section {
     opacity: 1;
 }
 
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.project-image {
+    height: 200px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
 .project-image::before {
     content: '';
     position: absolute;
@@ -783,33 +798,26 @@ section {
 
 .project-content {
     padding: 25px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 .project-title {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
 .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .tech-tag {
-    background: rgba(106, 17, 203, 0.2);
-    color: #b794f6;
-    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 500;
 }
-
 
 /* Project Modal */
 .project-modal {
@@ -1608,18 +1616,50 @@ footer {
     .typed {
         font-size: 1.5rem; /* Match mobile font size */
     }
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .availability-badge {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-    }
     
     /* Lighten particles for mobile */
     #particles-js {
         opacity: 0.5;
+    }
+    .contact-container {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+    
+    /* Ensure proper stacking order */
+    .open-to-work-card {
+        order: -1; /* Makes Open to Work card appear first */
+    }
+    
+    /* Adjust card padding for mobile */
+    .open-to-work-card, 
+    .contact-form {
+        padding: 20px;
+    }
+    
+    /* Reduce image height on mobile */
+    .work-card-image {
+        height: 150px;
+    }
+    
+    /* Adjust font sizes for mobile */
+    .work-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .work-card-description {
+        font-size: 0.95rem;
+    }
+    
+    /* Make form elements more mobile-friendly */
+    .form-control {
+        padding: 10px 12px;
+    }
+    
+    /* Adjust badge size */
+    .availability-badge {
+        padding: 6px 12px;
+        font-size: 0.85rem;
     }
 }
 
@@ -1682,17 +1722,9 @@ footer {
     flex-direction: column;
 }
 
-.project-image {
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(106, 17, 203, 0.1);
-}
-
 .project-image i {
     font-size: 4rem;
-    color: #6a11cb;
+    color: #e50940d2;
 }
 
 .project-image img {
@@ -1706,78 +1738,163 @@ footer {
     margin-bottom: 15px;
     flex: 1;
 }
-/* Contact Section Styles */
+
+/* Contact Section Layout */
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+    align-items: stretch;
 }
 
-.project-card {
-    background: rgba(255, 255, 255, 0.08);
+.open-to-work-card {
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     overflow: hidden;
-    transition: all 0.3s ease;
-    height: 100%;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
 }
 
-.project-image {
-    height: 200px;
+.contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+/* Open to Work Card Styling */
+.work-card-image {
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(135deg, rgba(203, 17, 76, 0.546), rgba(13, 92, 228, 0.774));
+    position: relative;
+    overflow: hidden;
 }
 
-.project-content {
+.work-card-image i {
+    font-size: 4rem;
+    background: #ffffff;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 2;
+}
+
+/* Updated Open to Work Card Styles with Better Tag Spacing */
+.work-card-content {
     padding: 25px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 15px; /* Adds consistent spacing between all child elements */
 }
 
-.project-title {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-.project-tech {
+.work-tech-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Reduced from 15px to let the gap property handle spacing */
 }
 
-.tech-tag {
-    background: rgba(106, 17, 203, 0.2);
-    color: #b794f6;
+/* Base tag style - keeps your existing design */
+.work-tech-tag {
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+/* Color variations */
+.work-tech-tag.ml { /* Machine Learning */
+    background: rgba(106, 17, 203, 0.2); /* Purple */
+    color: #b794f6;
+    border-color: rgba(106, 17, 203, 0.4);
+}
+
+.work-tech-tag.ai { /* AI */
+    background: rgba(255, 45, 117, 0.2); /* Pink */
+    color: #ff8fab;
+    border-color: rgba(255, 45, 117, 0.4);
+}
+
+.work-tech-tag.data { /* Data */
+    background: rgba(37, 117, 252, 0.2); /* Blue */
+    color: #8bb8ff;
+    border-color: rgba(37, 117, 252, 0.4);
+}
+
+.work-tech-tag.dev { /* Development */
+    background: rgba(46, 196, 182, 0.2); /* Teal */
+    color: #7de8e0;
+    border-color: rgba(46, 196, 182, 0.4);
+}
+
+.work-tech-tag.cloud { /* Cloud */
+    background: rgba(255, 193, 7, 0.2); /* Yellow */
+    color: #ffe082;
+    border-color: rgba(255, 193, 7, 0.4);
+}
+.work-tech-tag.prompt { /* Prompt Engineering */
+    background: rgba(255, 87, 34, 0.2); /* Orange */
+    color: #ffb74d;
+    border-color: rgba(255, 87, 34, 0.4);
+}
+
+.work-tech-tag.analytics { /* Analytics */
+    background: rgba(76, 175, 80, 0.2); /* Green */
+    color: #a5d6a7;
+    border-color: rgba(76, 175, 80, 0.4);
+}
+
+/* Hover effects for all tags */
+.work-tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .availability-badge {
+    margin-top: auto;
     display: inline-flex;
     align-items: center;
+    background: #b563de;
+    color: #ffffff;
     padding: 8px 15px;
     border-radius: 50px;
-    font-size: 0.8rem;
-    margin-top: 15px;
-    width: 100%;
-    justify-content: center;
-    gap: 8px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(58, 123, 213, 0.3);
+    transition: var(--transition);
 }
 
-.status-message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 0.9rem;
+/* Hover Effects */
+.open-to-work-card:hover,
+.contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
 }
+
+.work-tech-tag:hover {
+    background: rgba(106, 17, 203, 0.3);
+    transform: translateY(-2px);
+}
+
+.availability-badge:hover {
+    background: rgba(58, 123, 213, 0.25);
+    transform: translateY(-2px);
+}
+.work-card-description {
+    color: rgba(255, 255, 255, 0.8);
+    /* margin-bottom removed since gap handles spacing now */
+}
+
 *{
     -webkit-tap-highlight-color: transparent;
 }
