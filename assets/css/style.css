@@ -1520,30 +1520,14 @@ footer {
         margin-bottom: 20px;
     }
     .project-card,
+    .certificate-card,
     .mobile-timeline-item {
-    /* Remove !important rules that were overriding animations */
-        opacity: 0; /* Start hidden for fade-in effect */
-        transform: translateY(30px); /* Start position for animation */
-        display: block;
-        visibility: visible;
+        display: block !important;
+        visibility: visible !important;
         margin-bottom: 20px;
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    /* Certificate cards - keep static but visible */
-    .certificate-card {
-        opacity: 1;
-        transform: translateY(0);
-        display: block;
-        visibility: visible;
-        margin-bottom: 20px;
-    }
-
-    /* Visible state for animated cards */
-    .project-card.visible,
-    .mobile-timeline-item.visible {
-        opacity: 1;
-        transform: translateY(0);
+        /* Add these to preserve animations */
+        animation-fill-mode: both !important;
+        will-change: transform, opacity;
     }
     
     /* Modal Styles - Applied to all modals */
