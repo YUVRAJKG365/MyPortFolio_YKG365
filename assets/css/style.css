@@ -1203,6 +1203,7 @@ section {
     font-size: 0.9rem;
     text-align: center;
     transition: var(--transition);
+    width: 100%;
 }
 
 .certificate-link:hover {
