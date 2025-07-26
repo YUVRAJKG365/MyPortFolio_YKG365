@@ -7,6 +7,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Contact Section Layout */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        /* Open to Work Card */
+        .open-to-work-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            /* Stack contact cards vertically on mobile */
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Ensure both cards take full width */
+            .open-to-work-card,
+            .contact-form {
+                width: 100%;
+            }
+
+            /* Adjust padding for smaller screens */
+            .contact-form {
+                padding: 20px;
+            }
+
+            /* Adjust work card image height */
+            .work-card-image {
+                height: 150px;
+            }
+
+            /* Adjust font sizes for mobile */
+            .work-card-title {
+                font-size: 1.3rem;
+            }
+
+            .work-card-description {
+                font-size: 0.95rem;
+            }
+
+            /* Make form elements more mobile-friendly */
+            .form-control {
+                padding: 10px 12px;
+            }
+
+            /* Adjust badge size */
+            .availability-badge {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
 <!-- Particles Background -->
