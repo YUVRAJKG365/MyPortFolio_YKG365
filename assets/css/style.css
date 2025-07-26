@@ -1493,6 +1493,16 @@ footer {
     .contact-info {
         margin-bottom: 40px;
     }
+    /* Cards Visibility */
+    .project-card,
+    .certificate-card,
+    .mobile-timeline-item {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        display: block !important;
+        visibility: visible !important;
+        margin-bottom: 20px;
+    }
     
     /* Cards Animation Fix */
     .project-card,
