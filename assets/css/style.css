@@ -1714,7 +1714,7 @@ footer {
 }
 
 .project-card {
-    background: #1e1e2d;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
