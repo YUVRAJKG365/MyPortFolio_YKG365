@@ -1494,42 +1494,6 @@ footer {
         margin-bottom: 40px;
     }
     
-    /* Cards Animation Fix */
-    .project-card,
-    .mobile-timeline-item {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        display: block !important;
-        visibility: visible !important;
-        margin-bottom: 20px;
-    }
-    
-    .project-card.visible,
-    .mobile-timeline-item.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Certificate cards - keep static but visible */
-    .certificate-card {
-        opacity: 1 !important;
-        transform: none !important;
-        display: block !important;
-        visibility: visible !important;
-        margin-bottom: 20px;
-    }
-    .project-card,
-    .certificate-card,
-    .mobile-timeline-item {
-        display: block !important;
-        visibility: visible !important;
-        margin-bottom: 20px;
-        /* Add these to preserve animations */
-        animation-fill-mode: both !important;
-        will-change: transform, opacity;
-    }
-    
     /* Modal Styles - Applied to all modals */
     .project-modal .close-modal,
     .experience-modal .close-exp-modal,
