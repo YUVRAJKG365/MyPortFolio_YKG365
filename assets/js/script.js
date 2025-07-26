@@ -1,48 +1,62 @@
-// Initialize particles.js only on desktop
 function initParticles() {
-    if (window.innerWidth > 768) {
-        document.getElementById('particles-js').classList.add('desktop-only');
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#ffffff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
+    // Remove the desktop-only check and always initialize particles
+    particlesJS("particles-js", {
+        particles: {
+            number: { 
+                value: window.innerWidth > 768 ? 80 : 40, // Fewer particles on mobile
+                density: { 
+                    enable: true, 
+                    value_area: window.innerWidth > 768 ? 800 : 400 // Less dense on mobile
+                } 
             },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 140, line_linked: { opacity: 1 } },
-                    push: { particles_nb: 4 }
-                }
+            color: { value: "#ffffff" },
+            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+            opacity: { 
+                value: 0.5, 
+                random: true,
+                anim: { enable: window.innerWidth > 768 } // Only enable animation on desktop
             },
-            retina_detect: true
-        });
-    } else {
-        document.getElementById('particles-js').classList.remove('desktop-only');
-    }
+            size: { 
+                value: window.innerWidth > 768 ? 3 : 2, // Smaller particles on mobile
+                random: true 
+            },
+            line_linked: {
+                enable: true,
+                distance: window.innerWidth > 768 ? 150 : 100, // Shorter lines on mobile
+                color: "#ffffff",
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: window.innerWidth > 768 ? 2 : 1, // Slower movement on mobile
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { 
+                    enable: window.innerWidth > 768, // Only enable hover on desktop
+                    mode: "grab" 
+                },
+                onclick: { 
+                    enable: true, 
+                    mode: "push" 
+                },
+                resize: true
+            },
+            modes: {
+                grab: { distance: 140, line_linked: { opacity: 1 } },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -87,10 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     type(); // start typing
-    // Only load particles.js on desktop
-    if (window.innerWidth > 768) {
-        initParticles();
-    }
+    initParticles(); // Always initialize particles (now works on mobile too)
 
     // Add ripple effect to all interactive elements
     const interactiveElements = [
@@ -542,5 +553,18 @@ document.addEventListener('keydown', function(e) {
         closeModal();
         closeExpModal();
         closeResumeModal();
+    }
+});
+
+// Handle window resize for particles
+window.addEventListener('resize', function() {
+    // Only reinitialize particles if the device type changes (mobile/desktop)
+    if ((window.innerWidth > 768 && !document.getElementById('particles-js').classList.contains('desktop')) || 
+        (window.innerWidth <= 768 && document.getElementById('particles-js').classList.contains('desktop'))) {
+        pJSDom = document.querySelectorAll('.particles-js-canvas-el');
+        if (pJSDom.length) {
+            pJSDom.forEach(canvas => canvas.remove());
+        }
+        initParticles();
     }
 });
