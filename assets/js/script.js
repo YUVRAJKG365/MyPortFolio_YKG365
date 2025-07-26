@@ -536,6 +536,69 @@ if (window.innerWidth > 768) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const statusMessage = document.getElementById('formStatus');
+    
+    // Set the reply-to field before submission
+    contactForm.addEventListener('submit', function(event) {
+        const emailInput = document.getElementById('email');
+        document.getElementById('replyTo').value = emailInput.value;
+    });
+    
+    // Handle form submission
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Disable the submit button to prevent multiple submissions
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        // Get the form data
+        const formData = new FormData(contactForm);
+        
+        // Send the form data to Formspree
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Success message
+                statusMessage.textContent = 'Thank you for your message i will get back to you soon.';
+                statusMessage.className = 'status-message success';
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            // Error message
+            statusMessage.textContent = 'Oops! There was a problem sending your message. Please try again later.';
+            statusMessage.className = 'status-message error';
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+        });
+    });
+});
+
+function validateForm() {
+    const email = document.getElementById('email').value;
+    if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        return false;
+    }
+    return true;
+}
+
+
 // Touch support for project cards on mobile
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('touchstart', function() {
