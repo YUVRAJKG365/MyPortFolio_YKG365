@@ -1497,6 +1497,7 @@ footer {
     /* Contact Section */
     .contact-container {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     .contact-info {
         margin-bottom: 40px;
@@ -1621,45 +1622,31 @@ footer {
     #particles-js {
         opacity: 0.5;
     }
-    .contact-container {
-        grid-template-columns: 1fr; /* Single column */
-        gap: 20px;
-    }
-    
-    /* Ensure proper stacking order */
-    .open-to-work-card {
-        order: -1; /* Makes Open to Work card appear first */
-    }
-    
-    /* Adjust card padding for mobile */
-    .open-to-work-card, 
+    .open-to-work-card,
     .contact-form {
-        padding: 20px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
-    /* Reduce image height on mobile */
-    .work-card-image {
-        height: 150px;
+    .open-to-work-card.in-view,
+    .contact-form.in-view {
+        opacity: 1;
+        transform: translateY(0);
     }
     
-    /* Adjust font sizes for mobile */
-    .work-card-title {
-        font-size: 1.3rem;
+    /* Stagger the animations */
+    .open-to-work-card.in-view {
+        transition-delay: 0.1s;
     }
     
-    .work-card-description {
-        font-size: 0.95rem;
+    .contact-form.in-view {
+        transition-delay: 0.3s;
     }
     
-    /* Make form elements more mobile-friendly */
-    .form-control {
-        padding: 10px 12px;
-    }
-    
-    /* Adjust badge size */
-    .availability-badge {
-        padding: 6px 12px;
-        font-size: 0.85rem;
+    /* Adjust spacing between stacked cards */
+    .open-to-work-card {
+        margin-bottom: 20px;
     }
 }
 
@@ -1892,7 +1879,9 @@ footer {
 }
 .work-card-description {
     color: rgba(255, 255, 255, 0.8);
-    /* margin-bottom removed since gap handles spacing now */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adjust this value to increase/decrease spacing */
 }
 
 *{
