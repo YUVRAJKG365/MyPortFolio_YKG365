@@ -631,3 +631,48 @@ window.addEventListener('resize', function() {
         initParticles();
     }
 });
+// iOS detection and fixes
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    
+    if (isIOS) {
+        document.documentElement.classList.add('ios-device');
+        
+        // Fix for 100vh issue
+        function setVH() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+        
+        // Prevent zoom on focus for inputs
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Fix for iframe scrolling
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            iframe.setAttribute('scrolling', 'no');
+            iframe.style.overflow = 'hidden';
+        });
+    }
+    
+    // Fix for iOS viewport units
+    function handleViewportUnits() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    window.addEventListener('resize', handleViewportUnits);
+    handleViewportUnits();
+    
+    // Fix for iOS form inputs
+    const inputs = document.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+        });
+    });
+});
