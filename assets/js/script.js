@@ -631,48 +631,258 @@ window.addEventListener('resize', function() {
         initParticles();
     }
 });
-// iOS detection and fixes
+// iOS detection and comprehensive fixes
 document.addEventListener('DOMContentLoaded', function() {
-    // Check for iOS
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    // Enhanced iOS detection
+    const isIOS = () => {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
+               (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+    };
     
-    if (isIOS) {
+    if (isIOS()) {
         document.documentElement.classList.add('ios-device');
         
-        // Fix for 100vh issue
-        function setVH() {
+        // 1. Fix for 100vh issue (iOS viewport height bug)
+        const setVH = () => {
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
+            document.body.style.height = `${window.innerHeight}px`;
+        };
+        
         setVH();
         window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', setVH);
         
-        // Prevent zoom on focus for inputs
-        document.addEventListener('touchstart', function() {}, {passive: true});
+        // 2. Prevent unwanted page reloads on pull-to-refresh
+        let startY = 0;
+        let preventPullToRefresh = false;
         
-        // Fix for iframe scrolling
-        const iframes = document.querySelectorAll('iframe');
-        iframes.forEach(iframe => {
-            iframe.setAttribute('scrolling', 'no');
-            iframe.style.overflow = 'hidden';
+        document.body.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+            preventPullToRefresh = window.scrollY <= 0 && startY > 0;
+        }, { passive: true });
+        
+        document.body.addEventListener('touchmove', (e) => {
+            const y = e.touches[0].clientY;
+            // Check if we're scrolling up or down
+            if (preventPullToRefresh && y > startY) {
+                e.preventDefault();
+            }
+            startY = y;
+        }, { passive: false });
+        
+        // 3. Fix for iframe scrolling issues
+        const fixIframeScrolling = () => {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                iframe.setAttribute('scrolling', 'no');
+                iframe.style.overflow = 'hidden';
+                iframe.setAttribute('webkitallowfullscreen', '');
+                iframe.setAttribute('allowfullscreen', '');
+            });
+        };
+        fixIframeScrolling();
+        
+        // 4. Prevent zooming on form inputs
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.body.scrollTop = 0;
+            });
+            
+            // Set font-size to 16px on focus to prevent zoom
+            input.addEventListener('focus', function() {
+                this.style.fontSize = '16px';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.fontSize = '';
+            });
         });
+        
+        // 5. Smooth scrolling polyfill for iOS
+        const smoothScroll = (target) => {
+            const element = document.querySelector(target);
+            if (element) {
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        };
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                smoothScroll(this.getAttribute('href'));
+            });
+        });
+        
+        // 6. Fix for position:fixed elements on iOS
+        const fixFixedElements = () => {
+            const fixedElements = document.querySelectorAll('header, .mobile-menu');
+            fixedElements.forEach(el => {
+                el.style.position = 'absolute';
+                setTimeout(() => {
+                    el.style.position = 'fixed';
+                }, 10);
+            });
+        };
+        window.addEventListener('scroll', fixFixedElements);
+        fixFixedElements();
+        
+        // 7. Prevent elastic overscroll
+        document.body.style.overscrollBehaviorY = 'contain';
+        document.documentElement.style.overscrollBehaviorY = 'contain';
+        
+        // 8. Fix for click delays on iOS
+        document.addEventListener('touchstart', function() {}, { passive: true });
     }
     
-    // Fix for iOS viewport units
-    function handleViewportUnits() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    window.addEventListener('resize', handleViewportUnits);
-    handleViewportUnits();
+    // Apply these fixes to all devices for better consistency
+    // 1. Improved smooth scrolling for all browsers
+    const smoothScrollAll = (target) => {
+        const element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
     
-    // Fix for iOS form inputs
-    const inputs = document.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            window.scrollTo(0, 0);
-            document.body.scrollTop = 0;
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            smoothScrollAll(this.getAttribute('href'));
         });
     });
+    
+    // 2. Prevent form zoom on focus for all mobile devices
+    const preventFormZoom = () => {
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.fontSize = '16px';
+            });
+            input.addEventListener('blur', function() {
+                this.style.fontSize = '';
+            });
+        });
+    };
+    preventFormZoom();
+    
+    // 3. Initialize particles.js with error handling
+    if (typeof particlesJS !== 'undefined') {
+        try {
+            particlesJS.load('particles-js', 'assets/particles.json', function() {
+                console.log('Particles.js loaded successfully');
+            });
+        } catch (e) {
+            console.error('Particles.js initialization failed:', e);
+        }
+    }
+    
+    // 4. Mobile menu functionality
+    const toggleMobileMenu = () => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    };
+    
+    const closeMobileMenu = () => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+    
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // 5. Modal functionality
+    const openModal = (modalId) => {
+        const modal = document.getElementById(`${modalId}-modal`);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+    
+    const closeModal = () => {
+        const activeModal = document.querySelector('.project-modal.active');
+        if (activeModal) {
+            activeModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+    
+    // Experience modal functions
+    const openExpModal = (modalId) => {
+        const modal = document.getElementById(`${modalId}-modal`);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+    
+    const closeExpModal = () => {
+        const activeModal = document.querySelector('.experience-modal.active');
+        if (activeModal) {
+            activeModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+    
+    // Resume modal functions
+    const openResumeModal = () => {
+        const modal = document.getElementById('resume-modal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+    
+    const closeResumeModal = () => {
+        const modal = document.getElementById('resume-modal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+    
+    // Close modals when clicking outside content
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                if (this.classList.contains('project-modal')) {
+                    closeModal();
+                } else if (this.classList.contains('experience-modal')) {
+                    closeExpModal();
+                } else if (this.classList.contains('resume-modal')) {
+                    closeResumeModal();
+                }
+            }
+        });
+    });
+    
+    // Certificate carousel scrolling
+    const scrollCertificates = (direction) => {
+        const track = document.querySelector('.certificates-track');
+        if (track) {
+            const scrollAmount = track.clientWidth * 0.8 * direction;
+            track.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
 });
