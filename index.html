@@ -2,72 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Enhanced viewport for iOS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
-    <!-- iOS specific meta tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="format-detection" content="telephone=no">
-    <!-- Disable auto-detection of phone numbers -->
-    <meta name="apple-mobile-web-app-title" content="Yuvraj Kumar Gond">
-    <meta name="application-name" content="Yuvraj Kumar Gond">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuvraj Kumar Gond | AI/ML Engineer & Data Analyst</title>
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- CSS Resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Safari/iOS specific fixes */
-        @supports (-webkit-touch-callout: none) {
-            /* Fix for 100vh issue */
-            .hero {
-                min-height: -webkit-fill-available;
-                height: 100vh;
-            }
-            
-            /* Fix for sticky elements */
-            header {
-                position: -webkit-sticky;
-            }
-            
-            /* Fix for smooth scrolling */
-            html {
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            /* Disable hover effects on touch devices */
-            @media (hover: none) {
-                .btn:hover, 
-                .social-link:hover, 
-                .project-card:hover,
-                .skill-card:hover,
-                .certificate-card:hover,
-                .timeline-item:hover,
-                .nav-links a:hover,
-                .mobile-menu-links a:hover,
-                .work-tech-tag:hover,
-                .availability-badge:hover {
-                    transform: none !important;
-                }
-                
-                .btn:hover::before {
-                    animation: none;
-                }
-                
-                .nav-links a:hover::after {
-                    width: 0 !important;
-                }
-            }
-        }
-
         /* Contact Section Layout */
         .contact-container {
             display: grid;
@@ -134,7 +74,6 @@
             /* Make form elements more mobile-friendly */
             .form-control {
                 padding: 10px 12px;
-                font-size: 16px; /* Prevent iOS zooming */
             }
 
             /* Adjust badge size */
@@ -214,7 +153,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/mpm.jpeg" alt="Yuvraj Kumar Gond" loading="lazy" decoding="async">
+                    <img src="images/mpm.jpeg" alt="Yuvraj Kumar Gond" />
                 </div>
             </div>
         </div>
@@ -527,6 +466,14 @@
                 <div class="modal-video-container">
                     <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
                 </div>
+                <div class="modal-video-controls">
+                    <button class="video-control-btn" onclick="playPauseVideo('self-learning-facial-emotion-recognition-modal')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" onclick="restartVideo('self-learning-facial-emotion-recognition-modal')">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
             </div>
             <div class="modal-content">
                 <h2 class="modal-title">Self-Learning Facial Emotion Recognition System</h2>
@@ -555,6 +502,14 @@
                 <div class="modal-video-container">
                     <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
                 </div>
+                <div class="modal-video-controls">
+                    <button class="video-control-btn" onclick="playPauseVideo('exploratory-data-analysis-platform-modal')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" onclick="restartVideo('exploratory-data-analysis-platform-modal')">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
             </div>
             <div class="modal-content">
                 <h2 class="modal-title">Exploratory Data Analysis Platform</h2>
@@ -582,6 +537,14 @@
             <div class="modal-video-section">
                 <div class="modal-video-container">
                     <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
+                </div>
+                <div class="modal-video-controls">
+                    <button class="video-control-btn" onclick="playPauseVideo('automated-hospital-management-system-modal')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" onclick="restartVideo('automated-hospital-management-system-modal')">
+                        <i class="fas fa-redo"></i>
+                    </button>
                 </div>
             </div>
             <div class="modal-content">
@@ -628,7 +591,7 @@
                 <!-- Certificate 1 -->
                 <div class="certificate-card">
                     <div class="certificate-image">
-                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1776&q=80" alt="LinkedIn Learning Certificate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1776&q=80" alt="LinkedIn Learning Certificate">
                     </div>
                     <div class="certificate-content">
                         <h3 class="certificate-title">Generative AI Skills for Creative Content: Opportunities, Issues, and Ethics</h3>
@@ -644,7 +607,7 @@
                 <!-- Certificate 2 -->
                 <div class="certificate-card">
                     <div class="certificate-image">
-                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80" alt="Data Science Certificate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80" alt="Data Science Certificate">
                     </div>
                     <div class="certificate-content">
                         <h3 class="certificate-title">Artificial Intelligence Fundamentals</h3>
@@ -660,7 +623,7 @@
                 <!-- Certificate 3 -->
                 <div class="certificate-card">
                     <div class="certificate-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Python Certificate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Python Certificate">
                     </div>
                     <div class="certificate-content">
                         <h3 class="certificate-title">AI & ML WITH DATA SCIENCE</h3>
@@ -676,7 +639,7 @@
                 <!-- Certificate 4 -->
                 <div class="certificate-card">
                     <div class="certificate-image">
-                        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="TensorFlow Certificate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="TensorFlow Certificate">
                     </div>
                     <div class="certificate-content">
                         <h3 class="certificate-title">COMPUTER ARCHITECTURE</h3>
@@ -692,7 +655,7 @@
                 <!-- Certificate 5 -->
                 <div class="certificate-card">
                     <div class="certificate-image">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cloud Certificate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cloud Certificate">
                     </div>
                     <div class="certificate-content">
                         <h3 class="certificate-title">Build Your Generative AI Productivity Skills with Microsoft and LinkedIn</h3>
@@ -708,7 +671,7 @@
                 <!-- Certificate 6 -->
                 <div class="certificate-card">
                     <div class="certificate-image">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Prompt Engineering Certificate" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Prompt Engineering Certificate">
                     </div>
                     <div class="certificate-content">
                         <h3 class="certificate-title">GenAI Powered Data Analytics Job Simulation</h3>
@@ -774,14 +737,12 @@
                         
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required 
-                                   autocapitalize="words" autocorrect="off" autocomplete="name">
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required
-                                   autocapitalize="off" autocorrect="off" autocomplete="email">
+                            <input type="email" id="email" name="email" class="form-control" required>
                         </div>
 
                         <div class="form-group">
@@ -791,8 +752,7 @@
 
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required
-                                      autocapitalize="sentences" autocorrect="on"></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
                         </div>
 
                         <button type="submit" class="btn">Send Message</button>
