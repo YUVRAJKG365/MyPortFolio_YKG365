@@ -1906,3 +1906,145 @@ footer {
         outline: none;
     }
 }
+/* Safari/iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* Fix for 100vh issue on iOS */
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+    
+    /* Smooth scrolling for iOS */
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix for sticky hover effects on iOS */
+    @media (hover: none) {
+        .btn:hover, 
+        .social-link:hover,
+        .project-card:hover,
+        .skill-card:hover,
+        .certificate-card:hover,
+        .timeline-item:hover,
+        .nav-links a:hover,
+        .mobile-menu-links a:hover,
+        .work-tech-tag:hover,
+        .availability-badge:hover {
+            transform: none !important;
+        }
+        
+        /* Remove hover effects that might cause issues */
+        .btn:hover::before {
+            animation: none;
+        }
+    }
+    
+    /* Fix for input zooming on focus */
+    @media screen and (max-width: 767px) {
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            font-size: 16px !important;
+        }
+    }
+}
+
+/* Additional iOS fixes */
+/* Prevent elastic scrolling on non-scrollable elements */
+html, body {
+    overscroll-behavior-y: contain;
+}
+
+/* Fix for modal scrolling */
+.modal-content,
+.experience-modal-content,
+.project-modal-content,
+.resume-modal-content {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for position: fixed elements */
+header {
+    position: -webkit-sticky;
+}
+
+/* Fix for gradient text rendering */
+.logo,
+.hero h1 {
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+}
+
+/* Fix for backdrop-filter support */
+@supports not (backdrop-filter: blur(10px)) {
+    header,
+    .mobile-menu,
+    .skill-card,
+    .project-card,
+    .certificate-card,
+    .contact-form,
+    .open-to-work-card {
+        background: rgba(10, 10, 30, 0.95) !important;
+    }
+}
+
+/* Fix for button active states */
+button, a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Fix for scroll-snap issues */
+.certifications-container {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.certificate-card {
+    scroll-snap-align: start;
+}
+
+/* Fix for font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Fix for fixed background elements */
+#particles-js {
+    position: fixed;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+/* Fix for sticky hover on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .nav-links a:hover::after {
+        width: 0 !important;
+    }
+    
+    .btn:hover {
+        background: linear-gradient(45deg, var(--primary), var(--secondary)) !important;
+    }
+    
+    .btn-resume:hover {
+        background: linear-gradient(45deg, #ff2d75, #ff6b6b) !important;
+    }
+}
+
+/* Fix for viewport units on iOS */
+@viewport {
+    width: device-width;
+    zoom: 1.0;
+}
+
+/* Fix for input shadows */
+input, textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+/* Fix for iframe rendering on iOS */
+iframe {
+    -webkit-overflow-scrolling: touch;
+}
