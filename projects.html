@@ -111,6 +111,53 @@
                         <p>Engineered a full-stack solution for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling, and discharge processing. Features AI-driven chatbots for patient inquiries and real-time analytics dashboards.</p>
                     </div>
                 </div>
+
+                <div class="project-card" data-modal="CardioCare-AI-modal" onmouseenter="openModal('CardioCare-AI')">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CardioCare AI- Heart Disease Prediction & Detection</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <p>Developed a heart disease prediction and detection system using machine learning algorithms. The system analyzes patient data, including medical history and test results, to provide accurate predictions and risk assessments.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-modal="Delinquency-Prediction-modal" onmouseenter="openModal('Delinquency-Prediction')">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Delinquency Prediction</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                        <p>Developed a system to predict delinquency based on historical data, providing insights into potential risks and enabling proactive measures.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-modal="Stocks-Prediction-modal" onmouseenter="openModal('Stocks-Prediction')">
+                    <div class="project-image">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Stocks Prediction</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Scikit Learn</span>
+                            <span class="tech-tag">Matplotlib & Plotly</span>
+                        </div>
+                        <p>Developed a stocks prediction system that analyzes past sales and stocking data to forecast future stock requirements, helping businesses optimize inventory management.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -140,7 +187,7 @@
                 <p class="modal-description">
                     Developed a production-ready ML application that captures camera input, classifies facial expressions in real time with 89% initial accuracy, and employs a self-learning neural network that retrains on newly collected data to continuously improve prediction performance. The system uses a convolutional neural network (CNN) architecture with transfer learning techniques to achieve high accuracy with relatively small training datasets. The frontend interface was built with Streamlit for easy deployment and user interaction.
                 </p>
-                <a href="https://github.com/YUVRAJKG365/Facial-Emotion-Recognition" target="_blank" class="modal-link">
+                <a href="https://github.com/YUVRAJKG365/FACIAL-EMOTION-RECOGNITION-BY-YUVRAJKG365" target="_blank" class="modal-link">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
@@ -166,12 +213,12 @@
                     <span class="modal-tech-tag">Python</span>
                     <span class="modal-tech-tag">Streamlit</span>
                     <span class="modal-tech-tag">Gemini API</span>
-                    <span class="modal-tech-tag">Plotly</span>
+                    <span class="modal-tech-tag">Data Analysis & Visualization</span>
                 </div>
                 <p class="modal-description">
                     Built an interactive dashboard that automates data ingestion, cleansing, and feature engineering. The platform integrates LLM-powered document intelligence to extract text and images from various document formats including PDFs, Word documents, and images. It provides automated exploratory data analysis (EDA) with customizable visualizations, statistical summaries, and correlation analysis. The system executes predictive models based on user input and visualizes results with dynamic, interactive charts powered by Plotly. The Gemini API integration enables natural language queries about the dataset.
                 </p>
-                <a href="https://github.com/YUVRAJKG365/EDA-Platform" target="_blank" class="modal-link">
+                <a href="https://github.com/YUVRAJKG365/EDA_APP_YKG_365" target="_blank" class="modal-link">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
@@ -202,7 +249,7 @@
                 <p class="modal-description">
                     Engineered a comprehensive full-stack solution for hospital management with modules for bed allocation, inventory tracking, ambulance dispatch, appointment scheduling, and discharge processing. The system features AI-driven chatbots for patient inquiries powered by the OpenAI API, with context-aware responses tailored to hospital operations. Real-time analytics dashboards provide administrators with key performance indicators and operational metrics. The backend uses MySQL for data persistence with optimized queries for performance. The frontend was built with Streamlit for rapid development and deployment.
                 </p>
-                <a href="https://github.com/YUVRAJKG365/Hospital-Management-System" target="_blank" class="modal-link">
+                <a href="https://github.com/YUVRAJKG365/HospitalManagementSystem-YKG365" target="_blank" class="modal-link">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
@@ -210,11 +257,103 @@
     </div>
 </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="social-link">
+<div class="project-modal" id="CardioCare-AI-modal">
+    <div class="project-modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-grid">
+            <div class="modal-video-section">
+                <div class="modal-video-container">
+                    <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
+                    <button class="restart-video-btn" onclick="restartVideo('CardioCare-AI')">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-content">
+                <h2 class="modal-title">CardioCare AI- Heart Disease Prediction & Detection</h2>
+                <div class="modal-tech">
+                    <span class="modal-tech-tag">Python</span>
+                    <span class="modal-tech-tag">TensorFlow</span>
+                    <span class="modal-tech-tag">Machine Learning</span>
+                    <span class="modal-tech-tag">Streamlit</span>
+                </div>  
+                <p class="modal-description">
+                    Developed a heart disease prediction and detection system using machine learning algorithms. The system analyzes patient data, including medical history and test results, to provide accurate predictions and risk assessments. It features a user-friendly interface for both patients and healthcare providers, facilitating early intervention and personalized treatment plans.
+                </p>
+                <a href="https://github.com/YUVRAJKG365/CardioCare_AI_YKG" target="_blank" class="modal-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="project-modal" id="Delinquency-Prediction-modal">
+    <div class="project-modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-grid">
+            <div class="modal-video-section">
+                <div class="modal-video-container">
+                    <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
+                    <button class="restart-video-btn" onclick="restartVideo('Delinquency Prediction')">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-content">
+                <h2 class="modal-title">Delinquency Prediction</h2>
+                <div class="modal-tech">
+                    <span class="modal-tech-tag">Python</span>
+                    <span class="modal-tech-tag">Streamlit</span>
+                    <span class="modal-tech-tag">Pandas</span>
+                </div>
+                <p class="modal-description">
+                    This modal displays a certificate with a clean and professional design. It includes a title, recipient name, course details, and an issue date. The modal can be triggered from various sections of the website to showcase achievements or completed courses.
+                </p>
+                <a href="https://github.com/YUVRAJKG365/Delinquent_YKG_365" target="_blank" class="modal-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="project-modal" id="Stocks-Prediction-modal">
+    <div class="project-modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-grid  ">
+            <div class="modal-video-section">
+                <div class="modal-video-container">
+                    <iframe class="modal-video" src="https://drive.google.com/file/d/YOUR_VIDEO_ID/preview" allowfullscreen></iframe>
+                    <button class="restart-video-btn" onclick="restartVideo('Stocks Prediction')">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-content"> 
+                <h2 class="modal-title">Stocks Prediction</h2>
+                <div class="modal-tech">
+                    <span class="modal-tech-tag">Python</span>
+                    <span class="modal-tech-tag">Streamlit</span>
+                    <span class="modal-tech-tag">Scikit Learn</span>
+                    <span class="modal-tech-tag">Matplotlib & Plotly</span>
+                </div>
+                <p class="modal-description">
+                    Our stocks prediction system takes input of past sales and stocking data. By analyzing historical sales trends and inventory levels, it predicts future stock requirements, helping businesses optimize inventory management and ensure product availability based on anticipated demand.
+                </p>
+                <a href="https://github.com/YUVRAJKG365/Stocks_Prediction_YKG" target="_blank" class="modal-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/yuvraj-kumar-gond-105a552ba" target="_blank" class="social-link">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
                 <a href="https://github.com/YUVRAJKG365" target="_blank" class="social-link">
