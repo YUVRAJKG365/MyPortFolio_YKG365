@@ -465,7 +465,7 @@ section {
 
 .skill-card:hover {
     transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(209, 16, 16, 0.1);
     border-color: var(--accent);
 }
 
@@ -1409,6 +1409,12 @@ footer {
     }
     .exp-doc-item {
         min-width: 100%;
+    }
+    .timeline {
+        display: none;
+    }
+    .mobile-timeline {
+        display: block;
     }
 }
 
