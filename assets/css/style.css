@@ -1912,3 +1912,204 @@ footer {
         outline: none;
     }
 }
+
+/* Enhanced touch and pointer support */
+@media (hover: hover) and (pointer: fine) {
+  /* Devices with fine pointers (mice, trackpads) */
+  .skill-card:hover,
+  .project-card:hover,
+  .certificate-card:hover,
+  .mobile-timeline-item:hover,
+  .timeline-item:hover,
+  .social-link:hover,
+  .btn:hover,
+  .modal-link:hover,
+  .certificate-link:hover,
+  .video-control-btn:hover,
+  .cert-track-btn:hover,
+  .close-modal:hover,
+  .close-exp-modal:hover,
+  .close-resume-modal:hover,
+  .nav-links a:hover,
+  .mobile-menu-links a:hover,
+  .work-tech-tag:hover,
+  .open-to-work-card:hover,
+  .contact-form:hover,
+  .availability-badge:hover {
+    /* Existing hover styles will apply */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Specific hover effects for different elements */
+  .skill-card:hover {
+    background: rgba(209, 16, 16, 0.1);
+    border-color: var(--accent);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+  }
+  
+  .certificate-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: var(--accent);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, var(--secondary), var(--accent));
+  }
+  
+  .btn:hover::before {
+    left: 100%;
+  }
+  
+  .btn-resume:hover {
+    background: linear-gradient(45deg, #ff6b6b, #ff2d75);
+  }
+  
+  .modal-link:hover,
+  .certificate-link:hover {
+    background: linear-gradient(45deg, var(--secondary), var(--accent));
+    transform: translateY(-3px);
+  }
+  
+  .video-control-btn:hover,
+  .cert-track-btn:hover,
+  .close-modal:hover,
+  .close-exp-modal:hover,
+  .close-resume-modal:hover {
+    background: var(--accent);
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(255, 45, 117, 0.7);
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  .mobile-menu-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+  }
+  
+  .work-tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .open-to-work-card:hover,
+  .contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
+  }
+  
+  .availability-badge:hover {
+    background: rgba(58, 123, 213, 0.25);
+    transform: translateY(-2px);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices */
+  .skill-card,
+  .project-card,
+  .certificate-card,
+  .mobile-timeline-item,
+  .timeline-item,
+  .social-link,
+  .btn,
+  .modal-link,
+  .certificate-link,
+  .video-control-btn,
+  .cert-track-btn,
+  .close-modal,
+  .close-exp-modal,
+  .close-resume-modal,
+  .nav-links a,
+  .mobile-menu-links a,
+  .work-tech-tag,
+  .open-to-work-card,
+  .contact-form,
+  .availability-badge {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+  }
+  
+  /* Active state styles for touch feedback */
+  .skill-card:active,
+  .project-card:active,
+  .certificate-card:active,
+  .mobile-timeline-item:active,
+  .timeline-item:active,
+  .social-link:active,
+  .btn:active,
+  .modal-link:active,
+  .certificate-link:active,
+  .video-control-btn:active,
+  .cert-track-btn:active,
+  .close-modal:active,
+  .close-exp-modal:active,
+  .close-resume-modal:active,
+  .nav-links a:active,
+  .mobile-menu-links a:active,
+  .work-tech-tag:active,
+  .open-to-work-card:active,
+  .contact-form:active,
+  .availability-badge:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+  }
+}
+
+/* Hybrid devices (like iPads with touch and pointer) */
+@media (hover: hover) and (pointer: coarse) {
+  /* These devices can hover but have coarse pointers (like Apple Pencil) */
+  /* Keep both hover and active states */
+  .skill-card,
+  .project-card,
+  .certificate-card,
+  .mobile-timeline-item,
+  .timeline-item,
+  .social-link,
+  .btn,
+  .modal-link,
+  .certificate-link,
+  .video-control-btn,
+  .cert-track-btn,
+  .close-modal,
+  .close-exp-modal,
+  .close-resume-modal,
+  .nav-links a,
+  .mobile-menu-links a,
+  .work-tech-tag,
+  .open-to-work-card,
+  .contact-form,
+  .availability-badge {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.touch-active {
+  transform: scale(0.98) !important;
+  opacity: 0.9 !important;
+  transition: transform 0.1s ease, opacity 0.1s ease !important;
+}
+
+.touched {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transition: background-color 0.1s ease !important;
+}
