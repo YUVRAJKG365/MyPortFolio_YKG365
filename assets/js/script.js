@@ -1,4 +1,4 @@
-"use strict";
+
 
 function initParticles() {
     // Remove the desktop-only check and always initialize particles
