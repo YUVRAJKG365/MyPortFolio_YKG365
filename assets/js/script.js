@@ -1,5 +1,3 @@
-
-
 function initParticles() {
     // Remove the desktop-only check and always initialize particles
     particlesJS("particles-js", {
@@ -104,41 +102,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     type(); // start typing
     initParticles(); // Always initialize particles (now works on mobile too)
-
-    // Enhanced touch and pointer support setup
-    function setupHybridTouchSupport() {
-        const isHybridDevice = window.matchMedia('(hover: hover) and (pointer: coarse)').matches;
-        
-        if (isHybridDevice || 'ontouchstart' in window) {
-            const interactiveElements = [
-                '.skill-card', '.project-card', '.certificate-card', 
-                '.mobile-timeline-item', '.timeline-item', '.social-link',
-                '.btn', '.modal-link', '.certificate-link', '.video-control-btn',
-                '.cert-track-btn', '.close-modal', '.close-exp-modal', 
-                '.close-resume-modal', '.nav-links a', '.mobile-menu-links a',
-                '.work-tech-tag', '.open-to-work-card', '.contact-form',
-                '.availability-badge'
-            ];
-            
-            interactiveElements.forEach(selector => {
-                document.querySelectorAll(selector).forEach(element => {
-                    // Add cursor pointer for touch devices
-                    element.style.cursor = 'pointer';
-                    
-                    // Add touch feedback
-                    element.addEventListener('touchstart', function() {
-                        this.classList.add('touch-active');
-                    }, { passive: true });
-                    
-                    element.addEventListener('touchend', function() {
-                        this.classList.remove('touch-active');
-                    }, { passive: true });
-                });
-            });
-        }
-    }
-
-    setupHybridTouchSupport();
 
     // Add ripple effect to all interactive elements
     const interactiveElements = [
