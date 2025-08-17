@@ -465,7 +465,7 @@ section {
 
 .skill-card:hover {
     transform: translateY(-10px);
-    background: rgba(209, 16, 16, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-color: var(--accent);
 }
 
@@ -1410,12 +1410,6 @@ footer {
     .exp-doc-item {
         min-width: 100%;
     }
-    .timeline {
-        display: none;
-    }
-    .mobile-timeline {
-        display: block;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1668,234 +1662,6 @@ footer {
         padding: 6px 12px;
         font-size: 0.85rem;
     }
-
-    /* ==================== */
-    /* Performance Optimizations */
-    /* ==================== */
-
-    /* CPU and GPU Performance Optimizations */
-    html, body {
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeSpeed;
-        image-rendering: optimizeQuality;
-        shape-rendering: geometricPrecision;
-        will-change: auto;
-        overflow-x: hidden;
-        backface-visibility: hidden;
-        perspective: 1000px;
-        transform-style: preserve-3d;
-        font-display: swap;
-        text-size-adjust: 100%;
-    }
-
-    /* Critical Animation Elements - GPU Acceleration */
-    #particles-js,
-    header,
-    .mobile-menu,
-    .hero-content > *,
-    .about-image,
-    .skill-card,
-    .project-card,
-    .certificate-card,
-    .mobile-timeline-item,
-    .open-to-work-card,
-    .modal-content,
-    .contact-form,
-    .hero-content,
-    .section-title,
-    .about-content,
-    .skills-grid,
-    .projects-grid,
-    .certificates-track,
-    .project-image,
-    .certificate-image,
-    .work-card-image {
-        transform: translate3d(0, 0, 0);
-        backface-visibility: hidden;
-        perspective: 1000px;
-        will-change: transform, opacity;
-        contain: content;
-    }
-
-    /* CPU-Intensive Animation Optimization */
-    @keyframes fadeUp {
-        0% { opacity: 0; transform: translate3d(0, 30px, 0); }
-        60% { opacity: 0.8; }
-        100% { opacity: 1; transform: translate3d(0, 0, 0); }
-    }
-
-    @keyframes shine {
-        0% { transform: rotate(30deg) translate3d(-100%, 0, 0); opacity: 0.3; }
-        100% { transform: rotate(30deg) translate3d(100%, 0, 0); opacity: 0.3; }
-    }
-
-    /* Reduced Composite Layers */
-    .btn::before,
-    .project-image::before,
-    .about-image::before {
-        animation: none;
-        opacity: 0;
-    }
-
-    /* CPU-Friendly Alternatives */
-    .btn:hover::before,
-    .project-image:hover::before,
-    .about-image:hover::before {
-        animation: shine 3s forwards;
-        opacity: 0.2;
-    }
-
-    /* Layout Stability */
-    .typing-wrapper {
-        min-height: 1.8rem;
-        contain: strict;
-        overflow: hidden;
-    }
-
-    /* CPU Priority Management */
-    body:active *,
-    body:focus * {
-        animation-play-state: paused;
-        transition: none !important;
-    }
-
-    /* Intelligent Painting */
-    .hero,
-    section {
-        isolation: isolate;
-        contain: paint;
-    }
-
-    /* Memory Management */
-    .project-modal:not(.active),
-    .experience-modal:not(.active),
-    .resume-modal:not(.active) {
-        display: none;
-    }
-
-    /* CPU Thread Optimization */
-    @media (orientation: portrait) {
-        .hero-content,
-        .about-content {
-            animation-duration: 1.2s !important;
-        }
-    }
-
-    /* Battery Saver Mode */
-    @media (prefers-reduced-data: reduce) {
-        #particles-js {
-            display: none;
-        }
-        .about-image::before,
-        .project-image::before {
-            display: none;
-        }
-    }
-
-    /* Thermal Throttling Mitigation */
-    .projects-grid,
-    .skills-grid,
-    .certificates-track {
-        animation-duration: 1.5s !important;
-    }
-
-    /* Touch Response Optimization */
-    a, button, [role="button"], .btn,
-    .social-link, .project-card, .certificate-card {
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-        user-select: none;
-    }
-
-    /* Compositor Thread Prioritization */
-    .section-title,
-    .modal-title,
-    .exp-modal-title,
-    .typed-text {
-        will-change: transform, opacity, contents;
-        transform: translate3d(0, 0, 0);
-    }
-
-    /* CPU-Bound Animation Throttling */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation: none !important;
-            transition: none !important;
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-            scroll-behavior: auto !important;
-        }
-        .typed-text::after {
-            animation: blink 1s step-end infinite !important;
-        }
-    }
-
-    /* Background Rendering Optimization */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-        z-index: -2;
-    }
-
-    /* Particle Fallback */
-    #particles-js {
-        opacity: 0.5;
-        animation: particleFadeIn 2s forwards;
-        transform: translateZ(0);
-        will-change: transform;
-    }
-
-    @keyframes particleFadeIn {
-        to { opacity: 0.5; }
-    }
-
-    /* Expensive Filter Optimization */
-    header, .contact-form, .open-to-work-card {
-        backdrop-filter: blur(5px);
-    }
-
-    /* Layout Thrashing Prevention */
-    .container {
-        contain: layout style paint;
-    }
-
-    /* GPU accelerated transitions */
-    .btn,
-    .nav-links a,
-    .social-link,
-    .project-card,
-    .skill-card,
-    .certificate-card,
-    .mobile-timeline-item {
-        transform: translate3d(0, 0, 0);
-    }
-
-    /* Reduced animation intensity */
-    .btn:hover,
-    .project-card:hover,
-    .skill-card:hover,
-    .certificate-card:hover {
-        transform: translateY(-3px) scale(1.02);
-    }
-
-    /* Optimized gradient transitions */
-    .btn::before {
-        animation-duration: 1.5s;
-    }
-
-    /* Smooth scrolling containers */
-    .experience-modal-content,
-    .project-modal-content,
-    .resume-modal-content {
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior-y: contain;
-    }
 }
 
 @media (max-width: 576px) {
@@ -1942,7 +1708,7 @@ footer {
     .typing-wrapper {
         height: 1.3rem; /* Smaller screens */
     }
-    
+
     .typed-text {
         font-size: 1.3rem;
     }
