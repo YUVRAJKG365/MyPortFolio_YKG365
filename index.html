@@ -10,92 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Preloader Styles */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .preloader-logo {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 800;
-            font-size: 3rem;
-            background: linear-gradient(to right, var(--accent), var(--primary));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards 0.3s;
-        }
-        
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            border-top-color: var(--accent);
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        .loading-text {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards 0.5s;
-        }
-        
-        .progress-bar {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            margin-top: 20px;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards 0.7s;
-        }
-        
-        .progress {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Hide preloader when loaded */
-        #preloader.loaded {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
         /* Contact Section Layout */
         .contact-container {
             display: grid;
@@ -168,21 +82,6 @@
             .availability-badge {
                 padding: 6px 12px;
                 font-size: 0.85rem;
-            }
-            
-            /* Preloader adjustments for mobile */
-            .preloader-logo {
-                font-size: 2rem;
-            }
-            
-            .loader {
-                width: 40px;
-                height: 40px;
-                border-width: 4px;
-            }
-            
-            .progress-bar {
-                width: 150px;
             }
         }
     </style>
