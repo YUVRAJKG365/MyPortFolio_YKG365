@@ -1413,169 +1413,97 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* Performance optimizations */
-    * {
-        /* Reduce animations and transitions for mobile */
-        animation-duration: 0.5s !important;
-        animation-delay: 0s !important;
-        transition-duration: 0.2s !important;
-        transition-delay: 0s !important;
+    /* Global Mobile Styles */
+    .mobile-menu-btn {
+        display: block;
     }
-    
-    /* Keep essential animations */
-    @keyframes fadeUp,
-    @keyframes shine {
-        animation-timing-function: ease-out;
+    .nav-links {
+        display: none;
     }
-    
-    /* Adjust background animation for mobile */
-    #particles-js {
-        opacity: 0.3;
-        will-change: transform;
-        /* Reduce particle count and movement */
-        --particle-count: 40;
-        --particle-speed: 1;
-    }
-    
-    /* Mobile menu styles (keep transitions smooth) */
-    .mobile-menu {
-        transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .overlay {
-        transition: opacity 0.3s ease;
-    }
-    
-    /* Hero section optimizations */
+
+    /* Hero Section */
     .hero {
         padding-top: 150px;
         text-align: center;
     }
-    
     .hero h1 {
         font-size: 2.5rem;
-        animation: fadeUp 0.6s forwards !important;
-        will-change: transform, opacity;
     }
-    
     .hero h2 {
         font-size: 1.3rem;
-        animation: fadeUp 0.6s forwards 0.2s !important;
-        will-change: transform, opacity;
     }
-    
     .hero p {
         font-size: 1rem;
-        animation: fadeUp 0.6s forwards 0.4s !important;
-        will-change: transform, opacity;
     }
-    
-    .hero .btn {
-        animation: fadeUp 0.6s forwards 0.6s !important;
-        will-change: transform, opacity;
-    }
-    
-    /* About section optimizations */
+
+    /* About Section */
     .about-text h3 {
         font-size: 1.5rem;
     }
-    
     .about-buttons {
         flex-direction: column;
         gap: 15px;
     }
-    
     .btn-resume {
         margin-left: 0;
         margin-top: 15px;
     }
-    
     .about-image {
         width: 100%;
         height: 400px;
-        transform: scale(0.95);
-        opacity: 0;
-        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), 
-                   opacity 0.6s ease !important;
-        will-change: transform, opacity;
     }
-    
-    .about-image.in-view {
-        transform: scale(1);
-        opacity: 1;
-    }
-    
+
     /* Projects Grid */
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     /* Section Titles */
     .section-title {
         font-size: 2rem;
         margin-bottom: 50px;
         opacity: 1 !important;
         transform: translateY(0) !important;
-        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-        will-change: transform, opacity;
     }
-    
+
     /* Timeline */
     .timeline {
         display: none;
     }
-    
     .mobile-timeline {
         display: block;
     }
-    
-    /* Card animations */
-    .skill-card,
-    .project-card,
-    .mobile-timeline-item,
-    .certificate-card {
-        transform: translateY(20px);
-        opacity: 0;
-        transition: transform 0.4s ease-out, 
-                   opacity 0.4s ease-out !important;
-        will-change: transform, opacity;
+    .experience-modal.active .experience-modal-content {
+        width: 95%;
+        max-height: 85vh;
     }
-    
-    .skill-card.visible,
-    .project-card.visible,
-    .mobile-timeline-item.visible,
-    .certificate-card.visible {
-        transform: translateY(0);
-        opacity: 1;
+    /* Make resume modal content scrollable */
+    .resume-modal-content {
+        padding-top: 60px; /* Give space for close button */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
-    
-    /* Modal optimizations */
-    .experience-modal.active .experience-modal-content,
+
+    /* Ensure resume modal is properly sized on mobile */
     .resume-modal.active .resume-modal-content {
         width: 95%;
         max-height: 85vh;
     }
-    
-    .resume-modal-content {
-        padding-top: 60px;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    
+
+    /* Adjust iframe container in resume modal for mobile */
     .resume-container {
         height: 60vh;
     }
-    
+
     /* Contact Section */
     .contact-container {
         grid-template-columns: 1fr;
     }
-    
     .contact-info {
         margin-bottom: 40px;
     }
-    
-    /* Modal Styles */
+
+    /* Modal Styles - Applied to all modals */
     .project-modal .close-modal,
     .experience-modal .close-exp-modal,
     .resume-modal .close-resume-modal {
@@ -1589,7 +1517,7 @@ footer {
         font-size: 1.2rem;
         z-index: 2100;
     }
-    
+
     .project-modal-content,
     .experience-modal-content,
     .resume-modal-content {
@@ -1601,37 +1529,53 @@ footer {
         transform: none !important;
         transition: none !important;
     }
-    
+
     .modal-grid {
         grid-template-columns: 1fr;
     }
-    
-    /* Certificate cards */
+
+    /* Disable heavy animations */
+    .about-image::before,
+    .project-image::before {
+        animation: none;
+        display: none;
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .certificate-card:hover {
+        transform: none;
+    }
+
+    /* Section padding */
+    section {
+        padding: 60px 0;
+    }
     .certificate-card {
-        height: 400px;
+        height: 400px; /* Fixed height for all cards */
         min-height: auto;
         display: flex;
         flex-direction: column;
     }
-    
+
     .certificate-image {
-        height: 180px;
+        height: 180px; /* Fixed image height */
         flex-shrink: 0;
     }
-    
+
     .certificate-content {
         padding: 15px;
         display: flex;
         flex-direction: column;
         flex: 1;
-        min-height: 0;
+        min-height: 0; /* Allows content to scroll */
     }
-    
+
     .certificate-title {
-        font-size: 1.1rem !important;
+        font-size: 1.1rem !important; /* Force same font size */
         line-height: 1.3;
         margin-bottom: 8px;
-        height: 2.6em;
+        height: 2.6em; /* Exactly 2 lines of text (1.3em line-height * 2) */
         overflow: hidden;
         display: -webkit-box;
         line-clamp: 2;
@@ -1639,7 +1583,7 @@ footer {
         -webkit-box-orient: vertical;
         flex-shrink: 0;
     }
-    
+
     .certificate-issuer {
         font-size: 0.9rem;
         margin-bottom: 5px;
@@ -1648,77 +1592,77 @@ footer {
         text-overflow: ellipsis;
         flex-shrink: 0;
     }
-    
+
     .certificate-date {
         font-size: 0.8rem;
         margin-bottom: 15px;
         flex-shrink: 0;
     }
-    
+
+    .certificate-spacer {
+        flex: 1;
+        min-height: 0;
+    }
+
     .certificate-link {
         margin-top: 0;
         padding: 10px 15px;
         text-align: center;
         flex-shrink: 0;
     }
-    
-    /* Typing animation */
     .typing-wrapper {
-        height: 1.5rem;
-        justify-content: center;
+        height: 1.5rem; /* Adjust height for mobile */
     }
-    
+
     .typed {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Match mobile font size */
     }
-    
-    /* Open to Work card */
+
+    /* Lighten particles for mobile */
+    #particles-js {
+        opacity: 0.5;
+    }
+    .contact-container {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+
+    /* Ensure proper stacking order */
     .open-to-work-card {
-        order: -1;
+        order: -1; /* Makes Open to Work card appear first */
+    }
+
+    /* Adjust card padding for mobile */
+    .open-to-work-card,
+    .contact-form {
         padding: 20px;
     }
-    
+
+    /* Reduce image height on mobile */
     .work-card-image {
         height: 150px;
     }
-    
+
+    /* Adjust font sizes for mobile */
     .work-card-title {
         font-size: 1.3rem;
     }
-    
+
     .work-card-description {
         font-size: 0.95rem;
     }
-    
-    /* Form elements */
+
+    /* Make form elements more mobile-friendly */
     .form-control {
         padding: 10px 12px;
     }
-    
-    /* Availability badge */
+
+    /* Adjust badge size */
     .availability-badge {
         padding: 6px 12px;
         font-size: 0.85rem;
     }
-    
-    /* Section padding */
-    section {
-        padding: 60px 0;
-    }
-    
-    /* Reduce motion for users who prefer it */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation: none !important;
-            transition: none !important;
-        }
-        
-        #particles-js {
-            display: none;
-        }
-    }
 }
-
 @media (max-width: 576px) {
     .hero h1 {
         font-size: 2rem;
