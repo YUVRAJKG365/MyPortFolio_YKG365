@@ -2,23 +2,23 @@ function initParticles() {
     // Remove the desktop-only check and always initialize particles
     particlesJS("particles-js", {
         particles: {
-            number: { 
+            number: {
                 value: window.innerWidth > 768 ? 80 : 40, // Fewer particles on mobile
-                density: { 
-                    enable: true, 
+                density: {
+                    enable: true,
                     value_area: window.innerWidth > 768 ? 800 : 400 // Less dense on mobile
-                } 
+                }
             },
             color: { value: "#ffffff" },
             shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
-            opacity: { 
-                value: 0.5, 
+            opacity: {
+                value: 0.5,
                 random: true,
                 anim: { enable: window.innerWidth > 768 } // Only enable animation on desktop
             },
-            size: { 
+            size: {
                 value: window.innerWidth > 768 ? 3 : 2, // Smaller particles on mobile
-                random: true 
+                random: true
             },
             line_linked: {
                 enable: true,
@@ -40,13 +40,13 @@ function initParticles() {
         interactivity: {
             detect_on: "canvas",
             events: {
-                onhover: { 
+                onhover: {
                     enable: window.innerWidth > 768, // Only enable hover on desktop
-                    mode: "grab" 
+                    mode: "grab"
                 },
-                onclick: { 
-                    enable: true, 
-                    mode: "push" 
+                onclick: {
+                    enable: true,
+                    mode: "push"
                 },
                 resize: true
             },
@@ -58,147 +58,8 @@ function initParticles() {
         retina_detect: true
     });
 }
-// Mobile Preloader and Performance Optimizations
-function initMobilePreloader() {
-    if (window.innerWidth > 768) return; // Only for mobile
-    
-    const preloader = document.createElement('div');
-    preloader.id = 'mobile-preloader';
-    preloader.innerHTML = `
-        <div class="preloader-logo">YKG</div>
-        <div class="loader"></div>
-        <div class="loading-text">Loading Portfolio...</div>
-        <div class="progress-bar"><div class="progress" id="progress"></div></div>
-    `;
-    document.body.prepend(preloader);
-    
-    // Add minimal styles via JS to avoid FOUC
-    const style = document.createElement('style');
-    style.textContent = `
-        #mobile-preloader {
-            position: fixed; top: 0; left: 0; 
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            z-index: 9999; display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        .preloader-logo {
-            font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 2rem;
-            background: linear-gradient(to right, #ff2d75, #6a11cb);
-            -webkit-background-clip: text; background-clip: text;
-            -webkit-text-fill-color: transparent; margin-bottom: 20px;
-        }
-        .loader {
-            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
-            border-radius: 50%; border-top-color: #ff2d75;
-            animation: spin 1s linear infinite; margin-bottom: 15px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .progress-bar {
-            width: 150px; height: 3px; background: rgba(255,255,255,0.1);
-            border-radius: 2px; margin-top: 15px; overflow: hidden;
-        }
-        .progress {
-            height: 100%; width: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            transition: width 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
 
-    const progressBar = document.getElementById('progress');
-    let loaded = 0;
-    const totalResources = document.querySelectorAll('img, script, link[rel="stylesheet"]').length;
-    
-    // Track resource loading
-    function updateProgress() {
-        loaded++;
-        const progress = Math.min(95, Math.floor((loaded / totalResources) * 100));
-        progressBar.style.width = `${progress}%`;
-        return progress;
-    }
-
-    // Check when everything is loaded
-    function checkLoadComplete() {
-        if (updateProgress() >= 95) {
-            window.addEventListener('load', () => {
-                progressBar.style.width = '100%';
-                setTimeout(() => {
-                    preloader.classList.add('loaded');
-                    setTimeout(() => {
-                        preloader.remove();
-                        style.remove();
-                        document.body.style.overflow = 'auto';
-                        initMobileOptimizations(); // Initialize other optimizations after load
-                    }, 500);
-                }, 300);
-            });
-        }
-    }
-
-    // Poll for loading progress
-    const loadCheckInterval = setInterval(checkLoadComplete, 100);
-    
-    // Fallback timeout
-    setTimeout(() => {
-        clearInterval(loadCheckInterval);
-        if (preloader && preloader.isConnected) {
-            preloader.classList.add('loaded');
-            setTimeout(() => {
-                preloader.remove();
-                style.remove();
-                document.body.style.overflow = 'auto';
-                initMobileOptimizations();
-            }, 500);
-        }
-    }, 5000);
-
-    // Disable scroll during loading
-    document.body.style.overflow = 'hidden';
-}
-
-// Mobile Performance Optimizations
-function initMobileOptimizations() {
-    if (window.innerWidth > 768) return;
-    
-    // Force GPU acceleration
-    document.querySelectorAll('.container, section, .hero-content').forEach(el => {
-        el.style.transform = 'translateZ(0)';
-        el.style.backfaceVisibility = 'hidden';
-    });
-    
-    // Optimize animations
-    document.querySelectorAll('.animate, .section-title, .skill-card, .project-card').forEach(el => {
-        el.style.willChange = 'transform, opacity';
-    });
-    
-    // Improve touch responsiveness
-    document.addEventListener('touchstart', () => {}, { passive: true });
-    document.addEventListener('touchmove', (e) => {
-        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-            e.preventDefault();
-        }
-    }, { passive: false });
-    
-    // Reduce layout thrashing
-    let lastScrollPos = 0;
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (Math.abs(lastScrollPos - currentScroll) > 50) {
-            lastScrollPos = currentScroll;
-            requestAnimationFrame(animateOnScroll);
-        }
-    }, { passive: true });
-}
-
-// Modified DOMContentLoaded with preloader
 document.addEventListener("DOMContentLoaded", function() {
-    if (window.innerWidth <= 768) {
-        initMobilePreloader();
-    } else {
-        initMobileOptimizations(); // Still optimize desktop but without preloader
-    }
     const phrases = [
         "I'm an Data Analyst",
         "I'm an AI/ML Engineer",
@@ -244,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add ripple effect to all interactive elements
     const interactiveElements = [
-        'a', 'button', '.btn', '.project-card', 
-        '.skill-card', '.certificate-card', 
+        'a', 'button', '.btn', '.project-card',
+        '.skill-card', '.certificate-card',
         '.timeline-item', '.mobile-timeline-item',
         '.modal-link', '.certificate-link', '.social-link',
         '.form-control', '.video-control-btn', '.cert-track-btn'
@@ -257,24 +118,24 @@ document.addEventListener("DOMContentLoaded", function() {
             if (element.closest('.project-modal-content, .experience-modal-content, .resume-modal-content')) {
                 return;
             }
-    
+
             element.classList.add('ripple');
-    
+
             element.addEventListener('click', function(e) {
                 // Create ripple element
                 const ripple = document.createElement('span');
                 ripple.classList.add('ripple-effect');
-        
+
                 // Set ripple size and position
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
                 ripple.style.width = ripple.style.height = `${size}px`;
                 ripple.style.left = `${e.clientX - rect.left - size/2}px`;
                 ripple.style.top = `${e.clientY - rect.top - size/2}px`;
-        
+
                 // Add ripple to element
                 this.appendChild(ripple);
-        
+
                 // Remove ripple after animation
                 setTimeout(() => {
                     ripple.remove();
@@ -337,25 +198,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const statusMessage = document.getElementById('formStatus');
-    
+
     // Set the reply-to field before submission
     contactForm.addEventListener('submit', function(event) {
         const emailInput = document.getElementById('email');
         document.getElementById('replyTo').value = emailInput.value;
     });
-    
+
     // Handle form submission
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        
+
         // Disable the submit button to prevent multiple submissions
         const submitButton = contactForm.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
-        
+
         // Get the form data
         const formData = new FormData(contactForm);
-        
+
         // Send the form data to Formspree
         fetch(contactForm.action, {
             method: 'POST',
@@ -443,7 +304,7 @@ if (window.innerWidth <= 768) {
 function openExpModal(expId) {
     // Close any currently open modal first
     closeExpModal();
-    
+
     const modal = document.getElementById(`${expId}-modal`);
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
@@ -473,7 +334,7 @@ function playPauseVideo(modalId) {
     const modal = document.getElementById(modalId);
     const video = modal.querySelector('.modal-video');
     const playBtn = modal.querySelector('.fa-play').parentElement;
-    
+
     if (video.tagName === 'VIDEO') {
         // Handle HTML5 video element
         if (video.paused) {
@@ -503,7 +364,7 @@ function playPauseVideo(modalId) {
                 playBtn.querySelector('i').classList.add('fa-pause');
             }
         }
-        
+
         // Toggle play/pause icon
         playBtn.querySelector('i').classList.toggle('fa-play');
         playBtn.querySelector('i').classList.toggle('fa-pause');
@@ -534,15 +395,15 @@ function scrollCertificates(direction) {
     const trackWidth = certificatesTrack.scrollWidth;
     const containerWidth = document.querySelector('.certifications-container').offsetWidth;
     const maxScroll = trackWidth - containerWidth;
-    
+
     currentCertIndex += direction;
     const certCount = document.querySelectorAll('.certificate-card').length;
-    
+
     if (currentCertIndex < 0) currentCertIndex = 0;
     if (currentCertIndex > certCount - 1) currentCertIndex = certCount - 1;
-    
+
     const scrollPosition = currentCertIndex * certCardWidth;
-    
+
     certificatesTrack.style.transform = `translateX(-${scrollPosition}px)`;
 }
 
@@ -550,27 +411,27 @@ function scrollCertificates(direction) {
 if (window.innerWidth <= 768) {
     let startX, moveX;
     let isDragging = false;
-    
+
     certificatesTrack.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
     });
-    
+
     certificatesTrack.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         moveX = e.touches[0].clientX;
         const diff = moveX - startX;
-        
+
         // Prevent vertical scrolling when horizontally swiping
         if (Math.abs(diff) > 10) {
             e.preventDefault();
         }
     });
-    
+
     certificatesTrack.addEventListener('touchend', (e) => {
         if (!isDragging) return;
         isDragging = false;
-        
+
         const diff = moveX - startX;
         if (Math.abs(diff) > 50) { // Minimum swipe distance
             if (diff > 0) {
@@ -678,25 +539,25 @@ if (window.innerWidth > 768) {
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const statusMessage = document.getElementById('formStatus');
-    
+
     // Set the reply-to field before submission
     contactForm.addEventListener('submit', function(event) {
         const emailInput = document.getElementById('email');
         document.getElementById('replyTo').value = emailInput.value;
     });
-    
+
     // Handle form submission
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        
+
         // Disable the submit button to prevent multiple submissions
         const submitButton = contactForm.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
-        
+
         // Get the form data
         const formData = new FormData(contactForm);
-        
+
         // Send the form data to Formspree
         fetch(contactForm.action, {
             method: 'POST',
@@ -743,7 +604,7 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('touchstart', function() {
         this.classList.add('touched');
     });
-    
+
     card.addEventListener('touchend', function() {
         this.classList.remove('touched');
     });
@@ -761,30 +622,12 @@ document.addEventListener('keydown', function(e) {
 // Handle window resize for particles
 window.addEventListener('resize', function() {
     // Only reinitialize particles if the device type changes (mobile/desktop)
-    if ((window.innerWidth > 768 && !document.getElementById('particles-js').classList.contains('desktop')) || 
+    if ((window.innerWidth > 768 && !document.getElementById('particles-js').classList.contains('desktop')) ||
         (window.innerWidth <= 768 && document.getElementById('particles-js').classList.contains('desktop'))) {
         pJSDom = document.querySelectorAll('.particles-js-canvas-el');
         if (pJSDom.length) {
             pJSDom.forEach(canvas => canvas.remove());
         }
         initParticles();
-    }
-});
-
-// Optimize performance by pausing animations when tab is not visible
-document.addEventListener('visibilitychange', function() {
-    const preloader = document.getElementById('preloader');
-    if (document.hidden) {
-        document.body.classList.add('tab-inactive');
-        // Also pause preloader animation if still visible
-        if (preloader && !preloader.classList.contains('loaded')) {
-            preloader.style.animationPlayState = 'paused';
-        }
-    } else {
-        document.body.classList.remove('tab-inactive');
-        // Resume preloader animation if still visible
-        if (preloader && !preloader.classList.contains('loaded')) {
-            preloader.style.animationPlayState = 'running';
-        }
     }
 });
