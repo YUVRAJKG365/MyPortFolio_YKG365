@@ -1422,16 +1422,19 @@ footer {
         transition-delay: 0s !important;
     }
     
-    /* Keep these essential animations */
+    /* Keep essential animations */
     @keyframes fadeUp,
     @keyframes shine {
         animation-timing-function: ease-out;
     }
     
-    /* Disable heavy effects */
+    /* Adjust background animation for mobile */
     #particles-js {
-        opacity: 0.3 !important;
+        opacity: 0.3;
         will-change: transform;
+        /* Reduce particle count and movement */
+        --particle-count: 40;
+        --particle-speed: 1;
     }
     
     /* Mobile menu styles (keep transitions smooth) */
@@ -1444,21 +1447,56 @@ footer {
     }
     
     /* Hero section optimizations */
-    .hero h1,
-    .hero h2,
-    .hero p,
-    .hero .btn {
+    .hero {
+        padding-top: 150px;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
         animation: fadeUp 0.6s forwards !important;
-        animation-delay: calc(0.1s * var(--i)) !important;
+        will-change: transform, opacity;
+    }
+    
+    .hero h2 {
+        font-size: 1.3rem;
+        animation: fadeUp 0.6s forwards 0.2s !important;
+        will-change: transform, opacity;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        animation: fadeUp 0.6s forwards 0.4s !important;
+        will-change: transform, opacity;
+    }
+    
+    .hero .btn {
+        animation: fadeUp 0.6s forwards 0.6s !important;
         will-change: transform, opacity;
     }
     
     /* About section optimizations */
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .about-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn-resume {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    
     .about-image {
+        width: 100%;
+        height: 400px;
         transform: scale(0.95);
         opacity: 0;
         transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), 
-                    opacity 0.6s ease !important;
+                   opacity 0.6s ease !important;
         will-change: transform, opacity;
     }
     
@@ -1467,10 +1505,28 @@ footer {
         opacity: 1;
     }
     
-    /* Section title animations */
+    /* Projects Grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Section Titles */
     .section-title {
+        font-size: 2rem;
+        margin-bottom: 50px;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
         transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
         will-change: transform, opacity;
+    }
+    
+    /* Timeline */
+    .timeline {
+        display: none;
+    }
+    
+    .mobile-timeline {
+        display: block;
     }
     
     /* Card animations */
@@ -1481,7 +1537,7 @@ footer {
         transform: translateY(20px);
         opacity: 0;
         transition: transform 0.4s ease-out, 
-                    opacity 0.4s ease-out !important;
+                   opacity 0.4s ease-out !important;
         will-change: transform, opacity;
     }
     
@@ -1494,116 +1550,116 @@ footer {
     }
     
     /* Modal optimizations */
-    .project-modal-content,
-    .experience-modal-content,
-    .resume-modal-content {
-        transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-        will-change: transform;
-    }
-    
-    /* Disable these heavy effects on mobile */
-    .btn::before,
-    .about-image::before,
-    .project-image::before,
-    .work-card-image::before,
-    .nav-links a::after,
-    .social-link:hover,
-    .btn:hover {
-        animation: none !important;
-        display: none !important;
-    }
-    
-    /* Reduce motion for users who prefer it */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation: none !important;
-            transition: none !important;
-        }
-    }
-    
-    /* Layout adjustments */
-    .hero {
-        padding-top: 150px;
-        text-align: center;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero h2 {
-        font-size: 1.3rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .about-content,
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-image {
-        order: -1;
-        margin-bottom: 50px;
-        width: 100%;
-        height: 400px;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 50px;
-    }
-    
-    .timeline {
-        display: none;
-    }
-    
-    .mobile-timeline {
-        display: block;
-    }
-    
-    /* Modal adjustments */
-    .modal-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .experience-modal.active .experience-modal-content,
     .resume-modal.active .resume-modal-content {
         width: 95%;
         max-height: 85vh;
     }
     
+    .resume-modal-content {
+        padding-top: 60px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
     .resume-container {
         height: 60vh;
     }
     
-    /* Contact section */
+    /* Contact Section */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
     .contact-info {
         margin-bottom: 40px;
     }
     
-    /* Mobile menu button */
-    .mobile-menu-btn {
-        display: block;
+    /* Modal Styles */
+    .project-modal .close-modal,
+    .experience-modal .close-exp-modal,
+    .resume-modal .close-resume-modal {
+        display: flex !important;
+        opacity: 1 !important;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 45, 117, 0.8);
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+        z-index: 2100;
     }
     
-    .nav-links {
-        display: none;
+    .project-modal-content,
+    .experience-modal-content,
+    .resume-modal-content {
+        padding-top: 60px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 95%;
+        max-height: 85vh;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .modal-grid {
+        grid-template-columns: 1fr;
     }
     
     /* Certificate cards */
     .certificate-card {
         height: 400px;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
     }
     
     .certificate-image {
         height: 180px;
+        flex-shrink: 0;
+    }
+    
+    .certificate-content {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+    }
+    
+    .certificate-title {
+        font-size: 1.1rem !important;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        height: 2.6em;
+        overflow: hidden;
+        display: -webkit-box;
+        line-clamp: 2;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        flex-shrink: 0;
+    }
+    
+    .certificate-issuer {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+    }
+    
+    .certificate-date {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+    }
+    
+    .certificate-link {
+        margin-top: 0;
+        padding: 10px 15px;
+        text-align: center;
+        flex-shrink: 0;
     }
     
     /* Typing animation */
@@ -1612,7 +1668,11 @@ footer {
         justify-content: center;
     }
     
-    /* Open to work card */
+    .typed {
+        font-size: 1.5rem;
+    }
+    
+    /* Open to Work card */
     .open-to-work-card {
         order: -1;
         padding: 20px;
@@ -1622,34 +1682,40 @@ footer {
         height: 150px;
     }
     
+    .work-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .work-card-description {
+        font-size: 0.95rem;
+    }
+    
     /* Form elements */
     .form-control {
         padding: 10px 12px;
     }
     
-    /* Ensure modals are properly sized */
-    .project-modal-content,
-    .experience-modal-content,
-    .resume-modal-content {
-        padding-top: 60px;
-        width: 95%;
-        max-height: 85vh;
-    }
-    
-    /* Close buttons */
-    .close-modal,
-    .close-exp-modal,
-    .close-resume-modal {
-        top: 15px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
+    /* Availability badge */
+    .availability-badge {
+        padding: 6px 12px;
+        font-size: 0.85rem;
     }
     
     /* Section padding */
     section {
         padding: 60px 0;
+    }
+    
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation: none !important;
+            transition: none !important;
+        }
+        
+        #particles-js {
+            display: none;
+        }
     }
 }
 
