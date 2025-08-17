@@ -58,7 +58,147 @@ function initParticles() {
         retina_detect: true
     });
 }
+// Mobile Preloader and Performance Optimizations
+function initMobilePreloader() {
+    if (window.innerWidth > 768) return; // Only for mobile
+    
+    const preloader = document.createElement('div');
+    preloader.id = 'mobile-preloader';
+    preloader.innerHTML = `
+        <div class="preloader-logo">YKG</div>
+        <div class="loader"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+    `;
+    document.body.prepend(preloader);
+    
+    // Add minimal styles via JS to avoid FOUC
+    const style = document.createElement('style');
+    style.textContent = `
+        #mobile-preloader {
+            position: fixed; top: 0; left: 0; 
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .preloader-logo {
+            font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 2rem;
+            background: linear-gradient(to right, #ff2d75, #6a11cb);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 20px;
+        }
+        .loader {
+            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
+            border-radius: 50%; border-top-color: #ff2d75;
+            animation: spin 1s linear infinite; margin-bottom: 15px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .progress-bar {
+            width: 150px; height: 3px; background: rgba(255,255,255,0.1);
+            border-radius: 2px; margin-top: 15px; overflow: hidden;
+        }
+        .progress {
+            height: 100%; width: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            transition: width 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+
+    const progressBar = document.getElementById('progress');
+    let loaded = 0;
+    const totalResources = document.querySelectorAll('img, script, link[rel="stylesheet"]').length;
+    
+    // Track resource loading
+    function updateProgress() {
+        loaded++;
+        const progress = Math.min(95, Math.floor((loaded / totalResources) * 100));
+        progressBar.style.width = `${progress}%`;
+        return progress;
+    }
+
+    // Check when everything is loaded
+    function checkLoadComplete() {
+        if (updateProgress() >= 95) {
+            window.addEventListener('load', () => {
+                progressBar.style.width = '100%';
+                setTimeout(() => {
+                    preloader.classList.add('loaded');
+                    setTimeout(() => {
+                        preloader.remove();
+                        style.remove();
+                        document.body.style.overflow = 'auto';
+                        initMobileOptimizations(); // Initialize other optimizations after load
+                    }, 500);
+                }, 300);
+            });
+        }
+    }
+
+    // Poll for loading progress
+    const loadCheckInterval = setInterval(checkLoadComplete, 100);
+    
+    // Fallback timeout
+    setTimeout(() => {
+        clearInterval(loadCheckInterval);
+        if (preloader && preloader.isConnected) {
+            preloader.classList.add('loaded');
+            setTimeout(() => {
+                preloader.remove();
+                style.remove();
+                document.body.style.overflow = 'auto';
+                initMobileOptimizations();
+            }, 500);
+        }
+    }, 5000);
+
+    // Disable scroll during loading
+    document.body.style.overflow = 'hidden';
+}
+
+// Mobile Performance Optimizations
+function initMobileOptimizations() {
+    if (window.innerWidth > 768) return;
+    
+    // Force GPU acceleration
+    document.querySelectorAll('.container, section, .hero-content').forEach(el => {
+        el.style.transform = 'translateZ(0)';
+        el.style.backfaceVisibility = 'hidden';
+    });
+    
+    // Optimize animations
+    document.querySelectorAll('.animate, .section-title, .skill-card, .project-card').forEach(el => {
+        el.style.willChange = 'transform, opacity';
+    });
+    
+    // Improve touch responsiveness
+    document.addEventListener('touchstart', () => {}, { passive: true });
+    document.addEventListener('touchmove', (e) => {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Reduce layout thrashing
+    let lastScrollPos = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (Math.abs(lastScrollPos - currentScroll) > 50) {
+            lastScrollPos = currentScroll;
+            requestAnimationFrame(animateOnScroll);
+        }
+    }, { passive: true });
+}
+
+// Modified DOMContentLoaded with preloader
 document.addEventListener("DOMContentLoaded", function() {
+    if (window.innerWidth <= 768) {
+        initMobilePreloader();
+    } else {
+        initMobileOptimizations(); // Still optimize desktop but without preloader
+    }
     const phrases = [
         "I'm an Data Analyst",
         "I'm an AI/ML Engineer",
