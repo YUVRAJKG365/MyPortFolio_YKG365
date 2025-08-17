@@ -1534,33 +1534,17 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    /* Disable hover effects for mobile */
-    .logo:hover,
-    .nav-links a:hover,
-    .nav-links a:hover::after,
-    .btn:hover,
-    .btn:hover::before,
-    .btn-resume:hover,
+    /* Disable heavy animations */
+    .about-image::before,
+    .project-image::before {
+        animation: none;
+        display: none;
+    }
+
     .skill-card:hover,
     .project-card:hover,
-    .certificate-card:hover,
-    .social-link:hover,
-    .open-to-work-card:hover,
-    .contact-form:hover,
-    .work-tech-tag:hover,
-    .availability-badge:hover,
-    .modal-link:hover,
-    .video-control-btn:hover,
-    .cert-track-btn:hover,
-    .close-modal:hover,
-    .close-exp-modal:hover,
-    .close-resume-modal:hover {
-        transform: none !important;
-        background: initial !important;
-        box-shadow: none !important;
-        border-color: initial !important;
-        text-shadow: none !important;
-        color: initial !important;
+    .certificate-card:hover {
+        transform: none;
     }
 
     /* Section padding */
