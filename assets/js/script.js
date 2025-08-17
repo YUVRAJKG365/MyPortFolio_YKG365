@@ -59,41 +59,128 @@ function initParticles() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Preloader functionality
-    const preloader = document.getElementById('preloader');
-    const progressBar = document.getElementById('progress');
+// Add this at the beginning of your script.js file
+function initMobilePreloader() {
+    // Only proceed if on mobile
+    if (window.innerWidth > 768) return;
     
-    // Simulate loading progress
+    const preloader = document.createElement('div');
+    preloader.id = 'mobile-preloader';
+    preloader.innerHTML = `
+        <div class="preloader-logo">YKG</div>
+        <div class="loader"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+    `;
+    document.body.prepend(preloader);
+    
+    // Add styles dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+        #mobile-preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .preloader-logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            background: linear-gradient(to right, #ff2d75, #6a11cb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #ff2d75;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        .loading-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .progress-bar {
+            width: 150px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            transition: width 0.3s ease;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    const progressBar = document.getElementById('progress');
     let progress = 0;
+    
+    // Simulate progress (will be replaced by actual loading events)
     const interval = setInterval(() => {
-        progress += Math.random() * 10;
+        progress += Math.random() * 15;
         if (progress >= 100) {
             progress = 100;
             clearInterval(interval);
-            
-            // Wait for everything to load
-            window.addEventListener('load', function() {
-                setTimeout(() => {
-                    preloader.classList.add('loaded');
-                    
-                    // Remove preloader from DOM after animation completes
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                    }, 500);
-                }, 500); // Additional delay for smooth transition
-            });
         }
         progressBar.style.width = `${progress}%`;
     }, 100);
-    
+
+    // Wait for everything to load
+    window.addEventListener('load', function() {
+        clearInterval(interval);
+        progressBar.style.width = '100%';
+        
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                preloader.remove();
+                style.remove();
+            }, 500);
+        }, 500);
+    });
+
     // Fallback in case load event doesn't fire
     setTimeout(() => {
-        preloader.classList.add('loaded');
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
-    }, 5000); // Maximum 5 seconds wait time
+        if (preloader && preloader.isConnected) {
+            clearInterval(interval);
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            setTimeout(() => {
+                preloader.remove();
+                style.remove();
+            }, 500);
+        }
+    }, 5000);
+}
+document.addEventListener("DOMContentLoaded", function() {
+    initMobilePreloader();
     
     const phrases = [
         "I'm an Data Analyst",
