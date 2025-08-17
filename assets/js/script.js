@@ -770,3 +770,21 @@ window.addEventListener('resize', function() {
         initParticles();
     }
 });
+
+// Optimize performance by pausing animations when tab is not visible
+document.addEventListener('visibilitychange', function() {
+    const preloader = document.getElementById('preloader');
+    if (document.hidden) {
+        document.body.classList.add('tab-inactive');
+        // Also pause preloader animation if still visible
+        if (preloader && !preloader.classList.contains('loaded')) {
+            preloader.style.animationPlayState = 'paused';
+        }
+    } else {
+        document.body.classList.remove('tab-inactive');
+        // Resume preloader animation if still visible
+        if (preloader && !preloader.classList.contains('loaded')) {
+            preloader.style.animationPlayState = 'running';
+        }
+    }
+});
