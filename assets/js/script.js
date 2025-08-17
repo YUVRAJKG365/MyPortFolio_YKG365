@@ -60,6 +60,41 @@ function initParticles() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Preloader functionality
+    const preloader = document.getElementById('preloader');
+    const progressBar = document.getElementById('progress');
+    
+    // Simulate loading progress
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 10;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            
+            // Wait for everything to load
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    preloader.classList.add('loaded');
+                    
+                    // Remove preloader from DOM after animation completes
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 500); // Additional delay for smooth transition
+            });
+        }
+        progressBar.style.width = `${progress}%`;
+    }, 100);
+    
+    // Fallback in case load event doesn't fire
+    setTimeout(() => {
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }, 5000); // Maximum 5 seconds wait time
+    
     const phrases = [
         "I'm an Data Analyst",
         "I'm an AI/ML Engineer",
@@ -629,5 +664,22 @@ window.addEventListener('resize', function() {
             pJSDom.forEach(canvas => canvas.remove());
         }
         initParticles();
+    }
+});
+// Optimize performance by pausing animations when tab is not visible
+document.addEventListener('visibilitychange', function() {
+    const preloader = document.getElementById('preloader');
+    if (document.hidden) {
+        document.body.classList.add('tab-inactive');
+        // Also pause preloader animation if still visible
+        if (preloader && !preloader.classList.contains('loaded')) {
+            preloader.style.animationPlayState = 'paused';
+        }
+    } else {
+        document.body.classList.remove('tab-inactive');
+        // Resume preloader animation if still visible
+        if (preloader && !preloader.classList.contains('loaded')) {
+            preloader.style.animationPlayState = 'running';
+        }
     }
 });
